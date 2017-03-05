@@ -1,0 +1,653 @@
+html{
+	font-size: 62.5%;
+	font-family: "宋体";
+	font-weight: 300;
+}
+body{
+	width: 100%;
+	height: 768px;
+	background-color: #FFFFFF;
+	
+}
+.a{
+	text-decoration: none;
+	color: #228377;
+}
+header{
+	width: 100%;
+	height: 6%;
+	background-color: #62a4c9;
+}
+.adim{
+	float: left;
+	width: 15%;
+	height: auto;
+	padding: 1.25% 0 0 2%;
+}
+.adim figcaption{
+	font-size: 1.8rem;
+	float: left;
+	color: #fffff8;
+}
+.glyphicon-leaf{
+	color: #fff;
+	font-size:2.0rem;
+	float: left;
+	padding: 0 4%;
+}
+.setting{
+	width: 5%;
+	height: 100%;
+	float: right;
+	background-color: #63a8d1;
+}
+.setting a{
+	list-style: none;
+	text-decoration: none;
+}
+.glyphicon-tasks{
+	font-size: 2.0rem;
+	padding: 25% 0 0 13%;
+	color: #fff;
+}
+.glyphicon-chevron-down{
+	font-size: 1.0rem;
+	color: #fff;
+	padding: 13% 0 13% 15%;
+}
+.warn{
+	width: 5%;
+	padding: 0 4% 0 0;
+	height: 100%;
+	float: right;
+	background-color: #E4B9B9;
+	
+}
+.email{
+	width: 5%;
+	padding: 0 4% 0 0;
+	height: 100%;
+	float: right;
+	background-color:#2e8966 ;
+	
+}
+.glyphicon-envelope,.glyphicon-bell{
+	clear: both;
+	font-size: 2.0rem;
+	color:#fff;
+	top: 34%;
+	padding: 0;
+	left: 1.0em;
+	
+}
+.badge{
+	clear: all;
+	float: right;
+	padding: 0 6%;
+	
+}
+.content{
+	height: 94%;
+	/*background-color: #000000;*/
+}
+.vertical{
+	width: 13%;
+	height: 100%;
+	float: left;
+	background-color: #f2f2f2;
+	/*font-size: 2.8rem;*/
+	display: block;
+	border:  1px solid #C0C0C0;
+	
+}
+li{
+	list-style: none;
+	text-decoration: none;
+	
+}
+.vertical ul{
+	width: 100%;
+	font: "楷体";
+	font-size: 2.0rem;
+	padding: 1% 7%;
+
+	
+}
+#more{
+	float: right;
+	padding: 3.5% 0;
+}
+.vertical li{
+	padding: 15% 0;
+	
+
+}
+.vertical li a{
+	width: 100%;
+	list-style: none;
+	color: #228377;
+	text-decoration: none;
+}
+
+.vertical ul li ul{
+	font-size: 1.5rem;
+	list-style: none;
+	text-decoration: none;
+	padding: 3% 0;
+}
+.vertical ul li ul li{
+	width: 100%;
+	float: right;
+	padding: 8% 2%;
+}
+.apartment-setup{
+	display: none;
+}
+.system-setup{
+	display: none;
+	
+}
+/*将logo的位置调整一下,颜色改变一下*/
+.glyphicon-cog,.glyphicon-th-list,.glyphicon-pencil{
+	padding: 0  1% 0 0;
+	color: #5c555c;
+}
+.glyphicon-certificate,.glyphicon-plus,.glyphicon-tint
+,.glyphicon-plus,.glyphicon-minus,.glyphicon-eye-open,.glyphicon-remove,.glyphicon-th-large{
+	font-size: 0.6rem;
+	color: #5c555c;
+	padding: 0 3%;
+}
+.contain{
+	width: 87%;
+	height: 100%;
+	float: right;
+	background-color: #FFFFFF;
+}
+.daohang{
+	width: 100%;
+	height: 7%;
+	background-color: #F2F2F2;
+	border-bottom: 1px solid #C0C0C0;
+	border-top: 1px solid #C0C0C0;
+}
+.search{
+	float: right;
+	height: 7%;
+	padding:  0.8% 0;
+	
+}
+.anm-main{
+	width: 100%;
+	height: 88%;
+	
+}
+.announcement{
+	width: 50%;
+	height: 100%;
+	float: left;
+
+}
+
+.anm{
+	width: 100%;
+	height: 12%;
+	
+}
+.form-group{
+	width: 100%;
+	height: 80%;
+}
+.glyphicon-edit{
+	font-size: 3.5rem;
+	float: left;
+}
+.anm i{
+	padding: 4% 0 0 40%;
+	
+}
+.anm span{
+	font-size: 3.5rem;
+	float: right;
+	padding: 3% 25% 0 0;
+}
+.a1{
+	background-color: #F2F2F2;
+	height: 80%;
+	margin-left: 10%;
+	border-radius: 5%;
+}
+.anm-select{
+	padding-top: 5%;
+}
+.rang{
+	font-size: 2.5rem;
+	float: left;
+	padding: 0 3% 0 10%;
+}
+.select{
+	float: right;
+	padding: 0 21% 0 0;
+}
+.topic{
+	clear: both;
+	padding-top: 5%;
+}
+.topic-font{
+	font-size: 2.5rem;
+	float: left;
+	padding: 0 3% 0 10%;
+}
+.top-input{
+	float:right;
+	margin-right: 20%;
+	width: 43%;
+}
+.anm-conten{
+	width: 100%;
+	height: 70%;
+	clear: all;
+	padding-top: 10%;
+}
+.anm-conten span{
+	font-size: 2.5rem;
+	float: left;
+	padding: 0 3% 0 10%;
+}
+.anm-conten textarea{
+	float:right;
+	margin-right: 15%;
+	width: 50%;
+}
+.mybtn1{
+	padding: 3% 13% 0 15%;
+	width: 50%;
+	float: right;
+	clear: all;
+}
+.mybtn2{
+	padding: 3% 13% 0 25%;
+	width: 50%;
+	float: left;
+	clear: all;
+}
+.list{
+	width: 50%;
+	height: 100%;
+	float: right;
+	padding: 2%;
+	margin: 0 auto;
+}
+.list span{
+	font-size: 2.5em;
+	padding-left: 35%;
+}
+.list1{
+	padding-left: 10%;
+}
+.anm-list{
+	list-style: none;
+	text-decoration: none;
+	padding: 12%;
+	margin: 0 auto;
+	}
+.list li{
+	padding-top: 3%;
+}
+.glyphicon-list{
+	font-size: 4.5rem;
+}
+.grade-main{
+	width: 100%;
+	height: 88%;
+}
+.selectgrade{
+	width: 100%;
+	height: 100%;
+	padding-top: 10%;
+	padding-left: 20%;
+	}
+.selectcon{
+	width: 65%;
+	height: 50%;
+	background-color: #C1E2B3;
+	border-radius: 5%;
+	}
+.gradetext{
+	width: 50%;
+	float: left;
+	font-size: 2.3rem;
+	color: #A52A2A;
+	padding-top: 15%;
+	padding-left: 10%;
+	padding-bottom: 5%;
+}
+.gradeform{
+	width: 50%;
+	float: right;
+	padding-top: 15%;
+	padding-left: 5%;
+	padding-bottom: 8%;
+	
+}
+.mybtn3{
+	padding-left: 75%;
+}
+.addAparment{
+	width: 100%;
+	height: 88%;
+}
+#institution{
+	list-style: none;
+	width:350px;
+	height:635px;	
+	display: block;
+	font-size: 2.0rem;
+	
+}
+.institute-list{
+	padding: 40px;
+	margin-left:372px;
+}
+#institution li{
+	border: 1px darkgrey solid;
+	height:40px;
+	width:350px;
+	text-align: center;
+	line-height: 35px;
+}
+.institute-list .title,.adds input{
+	text-align: center;
+	height:39px;
+	background:#62a4c9;
+	color: #FFFFFF;
+	border:1px #ffffff solid;
+	font-weight: bold;
+}
+
+#addname input{
+	background:#fff;
+	border:1px #ffffff solid;
+}
+.adds input[type="text"]{
+	font-weight: 500;
+}
+.adds input{
+	width:348px;
+	border: none;		
+}
+.adds input:hover{
+	background: #85b2cb;
+}
+.adds input[type="text"]:focus{
+	background:#FFFFFF;
+	color: black;
+}
+.deleteAparment{
+	width: 100%;
+	height: 88%;
+}
+#institution1{
+	list-style: none;
+	height:635px;	
+	display: block;
+	font-size: 2.0rem;
+}
+#institution1 li{
+	border: 1px darkgrey solid;
+	height:40px;
+	width:350px;
+	padding-left:3px;
+	line-height: 35px;
+}
+#institution1 a{
+	float: right;
+	padding-right:3px;
+}
+.addAminstrator{
+	width: 100%;
+	height: 88%;
+}
+#administrator{
+	height:635px;			
+	display: block;
+	font-size: 1.5rem;
+}
+#administrator .table-list1{
+	width:400px;
+	height:120px;
+	text-indent: 4px;
+	float:left;
+	margin-top:40px;
+	margin-left:205px;
+}
+.tab-content caption{
+	text-align: center;
+	font-size: 2.0rem;
+	color: black;
+}
+.tab-content th{
+	background:#62a4c9;
+}
+#administrator .table-list2{
+	height:200px;
+	float:right;
+	margin-right:205px;
+	margin-top:40px;
+}
+.table-list2 button[type="submit"]{
+	margin-right:65px;
+}
+.table-list2 .la{
+	text-align: right;
+	font-weight: bold;
+}
+.table-list2 input{
+	border: 1px #62a4c9 solid;
+}
+.table-list2 button{
+	
+	background:#62a4c9;
+	border: 1px grey solid;
+}
+.deleteAminstrator{
+	width: 100%;
+	height: 88%;
+}
+#adminstrator1{
+	height:635px;			
+	display: block;
+	font-size: 1.5rem;
+}
+#adminstrator1 .table-list{
+	width:550px;
+	height:120px;
+	text-indent: 4px;
+	margin-top:40px;
+	float: left;
+	margin-left:312px;
+}
+.subject-setup{
+	width: 100%;
+	height: 88%;
+}
+#major-setup{
+	height:635px;		
+	display: block;
+	font-size: 15px;
+	margin-left: 110px;
+	padding-top:40px;
+}
+#major-setup .table-list3{
+	width:430px;
+	text-indent: 4px;
+	height: 140px;
+	float: left;
+	margin-bottom: 20px;
+}
+#major-setup .table-list3 input{
+	margin-left:10px;
+}
+#major-setup .delete{
+	float: right;
+	margin-right:5px;
+}
+#major-setup .table-list4{
+	height:130px;width:400px;
+	
+}
+#major-setup button{
+	float: right;
+	background:#62a4c9;
+	border: 1px grey solid;
+}
+#major-setup .btn:hover{
+	background: #8ec1de;
+}
+#major-setup input[type="text"]{
+	border: 1px #62a4c9 solid;
+}
+#major-setup .table-list5{
+	margin-right: 110px;
+	height:140px;width:430px;
+	text-indent: 4px;
+	float: right;
+}
+.addform{
+	width:400px;
+	float: left;      /*有修改*/
+}
+.addform tr{
+	height:60px;
+}
+.table-list5 input{
+	margin-left: 10px;
+}
+.table-list5 a:hover{
+	text-decoration: none;
+}
+     /* 添加班级与导入学生列表*/
+#major-top{
+	clear: both;
+	width:100%;
+	height:250px;
+}
+#major-setup .add1{
+	width:400px;
+	float: right;
+	margin-right: 110px;
+}
+.add1 input[type="text"],.add1 button{
+	margin-right:0px;
+	height:34px;
+}
+.add1 input{
+	border-radius: 4px 0px 0px 4px;
+	width:170px;
+}
+.add1 .Class{
+	border-radius: 0px 4px 4px 0px;
+}
+#major-setup .add1 tr{
+	width:400px;
+	height:60px;
+}
+.intersetup{
+	width: 100%;
+	height: 88%;
+}
+.location,.backcolor{
+	width: 100%;
+	height: 30%;
+    padding-top: 8%;
+	/*background-color: #AAAAAA;*/
+    
+}
+.location span{
+	width: 50%;
+	height: 30%;
+	padding: 0 5% 0 32%;
+	float: left;
+	font-family: "宋体";
+	font-size: 2.5rem;
+
+}
+.backcolor span{
+	width: 50%;
+	height: 30%;
+	padding: 0 5% 0 32%;
+	float: left;
+	font-family: "宋体";
+	font-size: 2.5rem;
+}
+.but{
+	width: 50%;
+	height: 70%;
+	padding: 0 19% 0 0;
+	float: right;
+	
+}
+.color{
+	width: 50%;
+	height: 100%;
+	padding: 0 19% 0 0;
+	float: right;
+}
+.btn1{
+	float: left;
+}
+.color1{
+	width: 9%;
+	height: 30%;
+	background-color:#f1f1b8;
+	border: 0.4em solid #EBCCD1;
+	margin: 0 15% 0 0;
+	float: right;
+}
+.color2{
+	width: 9%;
+	height: 30%;
+	margin: 0 6% 0 0;
+	background-color:#e7dac9;
+	border: 0.4em solid #EBCCD1;
+	float: right;
+}
+
+.color3{
+	width: 9%;
+	height: 30%;
+	margin: 0 6% 0 0;
+	
+	background-color:#ccffff;
+	border: 0.4em solid #EBCCD1;
+	float: right;
+}
+.color4{
+	width: 9%;
+	height: 30%;
+	margin: 0 6% 0 0;
+	background-color:#fffccc;
+	border: 0.4em solid #EBCCD1;
+	float: right;
+}
+.footer{
+	width: 100%;
+	height: 5%;
+	background-color: #CCCCCC;
+	font-size: 1.0rem;
+}
+.limits{
+	width: 80%;
+	float: left;
+}
+.limits p{
+	margin: 0 auto;
+	padding: 1% 0;
+	text-align: right;
+}
+#time{
+	width: 20%;
+	float: right;
+	text-align: center;
+}
+

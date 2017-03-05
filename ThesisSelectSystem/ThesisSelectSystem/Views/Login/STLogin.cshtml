@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>毕业选题系统</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/system-administrator-login.css" />
+    <script src="~/Scripts/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="container">
+            <h1>欢迎来到毕业选题系统</h1>
+            <form class="form">
+
+                <input type="text" placeholder="账号" id="STAccount"/>
+                <input type="password" placeholder="密码" id="STPassword"/>
+
+
+
+                <div class="teacher">
+                    <label for="teacher">教师</label>
+                    <input type="radio" id="teacher" value="教师" name="STRoles">
+                </div>
+                <div class="student">
+                    <label for="student">学生</label>
+                    <input type="radio" id="student" value="学生" name="STRoles">
+                </div>
+
+
+                <button id="login-button" type="submit">登录</button>
+
+            </form>
+
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+        </ul>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        var x = $("#teacher:checked").val();
+        if (x == 1) {
+            $("#teacher").css("background-color", "#000000");
+        }
+    });
+
+    function myUniversalAjax(type, url, data, dataType, successFunction, errorFunction) {
+        $.ajax({
+            type: type,
+            url: url,
+            data: data,
+            dataType: dataType,
+            success: successFunction,
+            error: errorFunction
+        });
+    };
+
+    $("#login-button").click(function () {
+        event.preventDefault();
+        var STAccount = $("#STAccount").val();
+        var STPwd = $("#STPassword").val();
+        var STRole = $("input[name='STRoles']:checked").val();
+        alert("帐号："+STAccount+"  身份："+STRole);
+        var type = "post";
+        var url = "CheckSTLoginInfo";
+        var data = { account: STAccount, password: STPwd, role: STRole };
+        var dataType = "json";
+
+        function success(data) {
+            alert(data.tip);
+            if (data.role=="教师") {
+                window.location.href = "../Teacher/Teacher";
+            }
+                
+        };
+
+        function error(data) {
+            alert(data.tip);
+        };
+
+        myUniversalAjax(type, url, data, dataType, success, error);
+    });
+</script>
+</body>
+</html>

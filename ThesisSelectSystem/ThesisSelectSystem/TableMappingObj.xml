@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <table name="student" primary-key="Sno">
+    <column name="Sno" use="true">sno</column>
+    <column name="MajorId" use="true">majorid</column>
+    <column name="Sex" use="true">sex</column>
+    <column name="ShortTel" use="false">shortTel</column>
+    <column name="LongTel" use="true">longTel</column>
+    <column name="ClassId" use="true">classid</column>
+    <column name="Sname" use="true">sname </column>
+    <column name="Email" use="true">email</column>
+    <column name="ChooseTopicWish" use="false">chooseTopicWish</column>
+    <column name="Position" use="false">position</column>
+    <column name="GradateYear" use="true">graduateYear</column>
+    <column name="WhetherMakeTopic" use="false">whetherMakeTopic</column>
+  </table>
+
+  <table name="teacher" primary-key="TeacherID">
+    <column name="TeacherID" use="true">id</column>
+    <column name="TeacherName" use="true">name</column>
+    <column name="LongTel" use="true">longTel</column>
+    <column name="ShortTel" use="true">shortTel</column>
+    <column name="Email" use="true">email</column>
+    <column name="TeachRank" use="true">rank</column>
+    <column name="GuideStuNumber" use="true">guideStudentNumber</column>
+    <column name="EducationalRoom" use="true">educationRoom</column>
+    <column name="DepartmentId" use="true">departmentId</column>
+    <column name="Account" use="false">account</column>
+    <column name="SpecialIdentity" use="true">specialIdentity</column>
+    <column name="MaxMakeTopicNumber" use="true">maxMakeTopicNumber</column>
+    <column name="TopicGroup" use="false">topicGroup</column>
+  </table>
+
+  <table name="userinfo" primary-key="Accounts">
+    <column name="Accounts" use="true">account</column>
+    <column name="Passwords" use="true">passwords</column>
+    <column name="Salt" use="true">salt</column>
+    <column name="Roles" use="true">roles</column>
+  </table>
+
+  <table name="announcement" primary-key="Aid">
+    <column name="Aid" use="true">aid</column>
+    <column name="Title" use="true">title</column>
+    <column name="Contents" use="true">contents</column>
+    <column name="Times" use="true">times</column>
+    <column name="Status" use="true">status</column>
+    <column name="Scope" use="true">scope</column>
+  </table>
+
+
+  <table name="classes" primary-key="ClassID">
+    <column name="ClassID" use="true">classId</column>
+    <column name="ClassName" use="true">className</column>
+    <column name="MajorID" use="true">marjorId</column>
+    <column name="HumanNumber" use="true">humanNumber</column>
+    <column name="GraduateYear" use="true">graduateYear</column>
+  </table>
+
+
+  <table name="thesis" primary-key="TopicId">
+    <column name="TopicId" use="true">topicId</column>
+    <column name="TopicTitle" use="true">topicTitle</column>
+    <column name="TopicContext" use="true">topicContext</column>
+    <column name="TopicSources" use="true">topicSources</column>
+    <column name="TopicMakerId" use="true">topicMakerId</column>
+    <column name="TopicStatus" use="true">topicStatus</column>
+    <column name="MaxOptionalNumber" use="true">maxOptionalNumber</column>
+    <column name="CurrentChooseTopicNumber" use="true">currentChoosedNumber</column>
+    <column name="TopicType" use="true">topicType</column>
+    <column name="UsingYear" use="true">usingYear</column>
+    <column name="GuideTeacherId" use="true">guideTeacherId</column>
+    <column name="IsChoice" use="true">isChoice</column>
+  </table>
+</root>
