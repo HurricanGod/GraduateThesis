@@ -14,6 +14,7 @@ body{
 * li{
 	list-style: none;
 }
+
 header{
 	width: 100%;
 	height: 7%;
@@ -84,12 +85,22 @@ header{
 	padding: 0px;
 	
 }
+#student1 img{
+	width: 10%;
+	
+}
 .btn1{
 	padding: 10% 13%;
 	font-size: 2.0rem;
 	color: #228377;
 	background-color: #DDDDDD;
 	border-bottom: 0.2rem solid #F2F2F2;
+}
+.btn4{
+	background-color: #DDDDDD;
+	font-size: 1.2rem;
+	border-bottom: none;
+	
 }
 .btn3{
 	background-color: #DDDDDD;
@@ -99,11 +110,11 @@ header{
 	font-size: 2.0rem;
 	color: #228377;
 	background-color: #DDDDDD;
-	border-bottom: 0.2rem solid #F2F2F2;
+	border-bottom: 0.1rem solid #F2F2F2;
 }
 .btn1:hover{
 	color: #228377;
-	border-bottom: 0.2rem solid #F2F2F2;
+	border-bottom: 0.1rem solid #F2F2F2;
 }
 .navigation ul li ul{
 	padding: 0px;
@@ -112,13 +123,23 @@ header{
 .navigation ul li ul li{
 	
 	padding: 0 15%;
-	font: "微软雅黑";
+	font-family: "微软雅黑";
 	color: #255625;
-	border-bottom: 0.2rem solid #F2F2F2;
+	border-bottom: 0.1rem solid #F2F2F2;
 	
 }
 .navigation ul li ul .btn{
 	font-size: 1.5rem;
+}
+.btn4{
+	background-color: #DDDDDD;
+	font-size: 1.2rem;
+
+	
+}
+#liebiao1 li,#liebiao2 li{
+	
+	border-bottom: none;
 }
 .contents{
 	width: 87%;
@@ -154,20 +175,22 @@ header{
 	height: 100%;
 	
 }
-.zini{
-	
+#liebiao1,#liebiao2{
+	display: none;
+}
+.zini,.zini1,.wode,.wode1{
 	width: 100%;
 	height: 100%;
+	padding: 5% 5% 5% 15%;
+	
 	/*background-color: #EBCCCC;*/
 }
-/*student2的样式是左边需要老师点击选择学生的table,
-  student3是右边已经选择的学生的列表，我拟命题与自拟命题的两个table都一样的样式*/
-.student2{
-	padding: 5%;
-	width: 50%;
+
+/*student2的样式是左边需要老师点击选择学生的table,student3是右边已经选择的学生的列表，我拟命题与自拟命题的两个table都一样的样式*/
+.student2,.student3{
+	/*padding: 5% 5% 5% 10%;*/
+	width: 65%;
 	height: 100%;
-	float: left;
-	
 }
 .student2 table{
 	background-color: #E4B9C0;
@@ -180,23 +203,22 @@ header{
 .th1{
 	width: 7%;
 	text-align: center;
+	padding-bottom: 2%;
+	
 	
 }
 .th2{
 	width: 15%;
 	text-align:center;
+	padding-bottom: 2%;
+	
 }
 .button{
-	padding: 10% 5% 10% 70%;
+	padding: 6% 5% 10% 70%;
 }
-.student3{
-	padding:5%;
-	width: 50%;
-	height: 100%;
-	float: right;
-}
+
 .student3 table{
-	background-color:#DDFFDD;
+	background-color: #DDFFDD;
 	border-radius: 5%;
 
 }
@@ -286,21 +308,58 @@ header{
 	background-color: #C1E2B3;
 	border-radius: 3%;
 }
-/*偶数行*/
-/*tr:nth-child(2n){
-	background-color: #CCCCCC;
-	opacity: 0.5;
-	
-}*/
-/*奇数行*/
-/*tr:nth-child(2n+1){
-	background-color: #60B564;
-	
-}*/
+
+.tcdPageCode{
+	padding: 15px 20px;
+	text-align: left;
+	color: #ccc;
+	text-align:center;
+	}
+.tcdPageCode a{
+	display: inline-block;
+	color: #428bca;
+	display: inline-block;
+	height: 25px;	
+	line-height: 25px;	
+	padding: 0 10px;
+	border: 1px solid #ddd;	
+	margin: 0 2px;
+	border-radius: 4px;
+	vertical-align: middle;
+	}
+.tcdPageCode a:hover{
+	text-decoration: none;
+	border: 1px solid #428bca;
+	}
+.tcdPageCode span.current{
+	display: inline-block;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 10px;
+	margin: 0 2px;
+	color: #fff;
+	background-color: #428bca;	
+	border: 1px solid #428bca;
+	border-radius: 4px;
+	vertical-align: middle;
+	}
+.tcdPageCode span.disabled{	
+	display: inline-block;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 10px;
+	margin: 0 2px;	
+	color: #bfbfbf;
+	background: #f2f2f2;
+	border: 1px solid #bfbfbf;
+	border-radius: 4px;
+	vertical-align: middle;
+	}
+
 .th3{
 	width: 3%;
-	padding-top: 0.8%;
-	padding-left: 1%;
+	padding-top: 1%;
+	padding-left: 2%;
 	/*padding-bottom: 2%;*/
 }
 .th4{
@@ -355,13 +414,13 @@ header{
 .pro{
 	width: 100%;
 	height: 100%;
-	padding-top: 7%;
+	padding-top: 5%;
 	padding-left: 25%;
 	
 }
 .protocol1{
 	width: 65%;
-	height: 85%;
+	height: 90%;
 	font-size: 2.0rem;
 	background-color: #b0e0e6;
 	border-radius: 5%;
@@ -418,14 +477,45 @@ header{
 	
 }
 .probtn{
-	padding-top: 15%;
+	padding-top: 27%;
 	padding-left: 50%;
+}
+.thesistitle{
+	width: 100%;
+	height: 100%;
+	padding-top: 5%;
+	padding-left: 15%;
+
+}
+.title{
+	width:87%;
+	height: 80%;
+	background-color: #b5d2b6;	
+	border-radius: 3%;
+}
+.title1{
+	width: 100%;
+	height: 100%;
 }
 .time{
 	width: 100%;
 	height: 6%;
 	background-color: #CCCCCC;
 	
+}
+.th7{
+	width: 35%;
+	padding-top: 1%;
+	padding-left: 1%;
+}
+.th8{
+	width: 15%;
+	padding-top: 1%;
+	padding-left: 0.5%;
+}
+.title1 a{
+	text-decoration: none;
+	color: #fff;
 }
 .ownership{
 	float: left;
@@ -436,7 +526,7 @@ header{
 	float: right;
 }
 
-/*这里我先做的是常规的网站,然后不断向下兼容*/
-/*@media screen and (max-width: 960px) { ... } /*兼容平板*/
-/*@media screen and (max-width: 640px) { ... }*/ /*兼容手机*/
+/*这里我先做的是常规的网站,然后不断向下兼容
+@media screen and (max-width: 960px) { ... } /*兼容平板*/
+/*@media screen and (max-width: 640px) { ... } /*兼容手机*/
 /*@media screen and (max-width: 480px) { ... }*/

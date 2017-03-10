@@ -215,6 +215,7 @@
     <Content Include="Views\SystemAdmin\SystemAdministrator.cshtml" />
     <Content Include="Views\SystemAdmin\UploadTeacherTable.cshtml" />
     <Content Include="Views\Teacher\Teacher.cshtml" />
+    <Content Include="Views\Teacher\ShowThesisDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

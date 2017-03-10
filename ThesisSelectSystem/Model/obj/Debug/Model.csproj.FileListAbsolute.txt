@@ -3,3 +3,8 @@ D:\GitRepository\ThesisSelectSystem\ThesisSelectSystem\Model\bin\Debug\Model.pdb
 D:\GitRepository\ThesisSelectSystem\ThesisSelectSystem\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\GitRepository\ThesisSelectSystem\ThesisSelectSystem\Model\obj\Debug\Model.dll
 D:\GitRepository\ThesisSelectSystem\ThesisSelectSystem\Model\obj\Debug\Model.pdb
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\Model\bin\Debug\Model.dll
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\Model\bin\Debug\Model.pdb
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\Model\obj\Debug\Model.dll
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\Model\obj\Debug\Model.pdb

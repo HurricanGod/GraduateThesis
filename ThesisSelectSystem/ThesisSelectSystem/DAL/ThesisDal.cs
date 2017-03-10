@@ -57,5 +57,42 @@ namespace ThesisSelectSystem.DAL
             } 
             return teacherThesesList;
         }
+
+
+        public List<PartOfThesis> QueryAllNotPassExamineTesis(int year)
+        {
+            List<PartOfThesis> thesisList=new List<PartOfThesis>();
+            SqlParameter yearParameter=new SqlParameter("@year",SqlDbType.Int);
+            yearParameter.Value = year;
+            DataTable dataTable = SqlHelper.ExecuteDataTableProc("QueryUnPassThesis",new SqlParameter[] {yearParameter});
+            Object[] values=new object[6];
+            foreach (DataRow row in dataTable.Rows)
+            {
+                int index = 0;
+                PartOfThesis thesis = new PartOfThesis();
+                foreach (DataColumn column in dataTable.Columns)
+                {
+                    values[index++] = row[column];
+                }
+                try
+                {
+                    thesis.topicId = Convert.ToInt32(values[0]);
+                    thesis.makerName = Convert.ToString(values[1]);
+                    thesis.topicTitle = Convert.ToString(values[2]);
+                    thesis.topicSources = Convert.ToString(values[3]);
+                    thesis.topicType = Convert.ToString(values[4]);
+                    thesis.maxOptionalNumber = Convert.ToInt32(values[5]);
+                    thesisList.Add(thesis);
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+                
+            }
+            return thesisList;
+        } 
+
     }
 }

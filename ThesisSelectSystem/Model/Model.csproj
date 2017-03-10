@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Announcement.cs" />
     <Compile Include="Classes.cs" />
+    <Compile Include="PartOfThesis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Teacher.cs" />
