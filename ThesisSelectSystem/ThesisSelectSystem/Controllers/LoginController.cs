@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.WebPages;
+using Model;
 using ThesisSelectSystem.Filter;
 using ThesisSelectSystem.BLL;
 using ThesisSelectSystem.DAL;
@@ -66,6 +68,7 @@ namespace ThesisSelectSystem.Controllers
             if (login && roles == "管理员")
             {
                 Session["Account"] = Account;
+                Session["Role"] =roles;
                 DbOperation.SetXmlPath(AppDomain.CurrentDomain.BaseDirectory + "TableMappingObj.xml");
                 return Content("1");
             }   
@@ -89,7 +92,14 @@ namespace ThesisSelectSystem.Controllers
             if (whetherLegal&&clientRole==realRole)
             {
                 Session["Account"] = account;
+                Session["Role"] = realRole;
                 DbOperation.SetXmlPath(AppDomain.CurrentDomain.BaseDirectory + "TableMappingObj.xml");
+                if (realRole.Equals("教师"))
+                {
+                    Teacher teacher = (Teacher)DbOperation.QueryById(typeof (Teacher), account, "teacher");
+                    string identity = teacher.specialIdentity.IsEmpty() ? "教师" : teacher.specialIdentity;
+                    Session["Identity"] = identity;
+                }
                 return Json(new {tip= "成功登录" ,role=realRole});
             }
             else

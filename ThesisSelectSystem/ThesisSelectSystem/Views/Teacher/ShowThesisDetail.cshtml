@@ -10,90 +10,184 @@
     <title>进行审题</title>
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
     <style type="text/css">
-        body {
-            width: 100%;
-            height: 650px;
-            background-color: #FFFFFF;
-            margin: 0;
-        }
-
-        .style1 {
-            width: 80%;
-            height: 95%;
-            padding-top: 6%;
-            padding-left: 25%;
-        }
-
-        .style2 {
-            width: 100%;
-            height: 100%;
-            background-color: #b5d2b6;
-            opacity: 0.7;
-        }
-
-        .title, .source, .suggest, .type, .pass {
-            width: 80%;
-            height: 10%;
-            clear: both;
-        }
-
-        .introduction {
-            width: 80%;
-            height: 50%;
-            clear: both;
-        }
-
-        .right {
-            float: right;
-            width: 50%;
-            padding-top: 5%;
-            padding-right: 8%;
-        }
-
-        .left {
-            float: left;
-            width: 50%;
-            padding-top: 5%;
-            padding-left: 4%;
-        }
+        body{
+				
+				width: 100%;
+				height: 750px;
+				margin: 0;
+				font-size: 20px;
+			}
+			.style1{
+				width: 85%;
+				height: 95%;
+				padding-top: 3%;
+				padding-left: 20%;
+	
+			}
+			.style2{
+				width: 100%;
+				height: 100%;
+				background-color: #a8d5e8;
+				/*opacity: 0.7;*/
+				border-radius: 10%;
+				}
+				.title{
+				width: 80%;
+				height: 10%;
+				padding-top: 1%;
+				padding-left: 14%;
+				}
+			.source,.pass{
+				width: 80%;
+				height: 6%;
+				padding-top: 1%;
+				padding-left: 14%;
+			}
+			.title1{
+				width:35%;
+				height: 100%;
+				float: left;
+			}
+			.title2{
+				width: 65%;
+				height: 100%;
+				float: right;
+				word-wrap:break-word; 
+				word-break:break-all; 
+				overflow: hidden;
+			}
+			.source2{
+				padding-left: 20%;
+			}
+			.introduction,.suggest{
+				width: 80%;
+				height: 25%;
+				padding-top: 2%;
+				padding-left: 14%;
+			}
+			.introduction2{
+				width: 33%;
+				float: left;
+			}			
+			.introduction1{
+				width: 67%;
+				height: 100%;
+				float: right;
+				font-size: 15px;
+				background-color: #FFFCCC;
+				border: 1px solid #8C8C8C;
+				border-radius:5% ;
+				overflow: auto;
+			}
+			.pass2{
+				padding-right: 50%;
+				width: 65%;
+				float: right;
+			}
+			.suggest1{
+				width: 33%;
+				float: left;
+			}
+			.suggest2{
+				width: 67%;
+				height: 100%;
+				float: right;
+				font-size: 15px;
+				background-color: #FFFCCC;
+				border: 1px solid #8C8C8C;
+				border-radius:5% ;
+				overflow: auto;
+			}
+			.submit{
+				padding-left: 44%;
+				padding-top: 5%;
+				
+			}
     </style>
 </head>
 <body>
-    <div class="style1">
-        <div class="style2">
-            <form action="#" method="post">
-                <div id="title">
-                    <span class="left">课题标题:</span>
-                    <span class="right">@ViewBag.title</span>
-                </div>
-                <div class="source">
-                    <span class="left">课题来源</span>
-                    <span class="right">@ViewBag.source</span>
-                </div>
-                <div class="type">
-                    <span class="left">课题类型</span>
-                    <span class="right">@ViewBag.type</span>
-                </div>
-                <div class="introduction">
-                    <span class="left">课题介绍</span>
-                    <section class="right">
-                       @ViewBag.content
-                    </section>
-                </div>
-                <div class="suggest">
-                    <span class="left">修改意见</span>
-                    <textarea class="right"></textarea>
-                </div>
-                <div class="pass">
-                    <span class="left">选择是否通过</span>
-                    <select>
-                        <option>通过</option>
-                        <option>建议再修改</option>
+<div class="style1">
+    <div class="style2">
+        <div class="title">
+            <span class="title1">课题标题:</span>
+            <span class="title2">@ViewBag.title</span>
+        </div>
+        <div class="source">
+            <span class="source1">课题来源</span>
+            <span class="source2">@ViewBag.source</span>
+        </div>
+        <div class="source">
+            <span class="source1">课题类型</span>
+            <span class="source2">@ViewBag.type</span>
+        </div>
+        <div class="source">
+            <span class="source1">通过/总数:</span>
+            <span class="source2">0/5</span>
+        </div>
+        <div class="introduction">
+            <span class="introduction2">课题介绍</span>
+            <section class="introduction1">
+                @ViewBag.content
+            </section>
+        </div>
+        <div class="suggest">
+            <span class="suggest1">修改意见</span>
+            <textarea class="suggest2" id="revise-advice"></textarea>
+        </div>
+        <div class="pass">
+            <span class="title1">选择是否通过</span>
+            <span class="pass2">
+                    <select name="passornot" class="form-control" id="decision">
+                        <option value="pass">通过</option>
+                        <option value="failure">建议再修改</option>
                     </select>
-                </div>
-                <button class="btn btn-primary">确定提交</button>
-            </form>
+                </span>
+        </div>
+        <div class="submit">
+            <button class="btn btn-success" id="audit-thesis-btn">确定提交</button>
         </div>
     </div>
+</div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    function myPostAjax(url, data, successFunction) {
+        $.ajax({
+            type: "post",
+            url: url,
+            data: data,
+            dataType: "json",
+            success: successFunction,
+            error: function(textStatus, errorThrown) {
+                alert("状态：" + textStatus + "\n异常：" + errorThrown);
+            } 
+        });
+    };
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+
+    //审题员提交审题
+    $("#audit-thesis-btn").click(function() {
+        var data = new Object();
+        var url = "/Teacher/CheckThesis";
+        var id = getUrlParam("thesisId");
+        data.advice = $("#revise-advice").val();
+        data.isPass = $("#decision option:selected").val();
+        data.thesisId = id;
+        alert("意见："+data.advice+"\n是否通过："+data.isPass+"id:"+data.thesisId);
+
+        function success(data) {
+            alert(data.tip);
+            location.href = "/Teacher/Teacher";
+        }
+
+        myPostAjax(url, data, success);
+    });
+
+</script>
+    
 </body>
 </html>

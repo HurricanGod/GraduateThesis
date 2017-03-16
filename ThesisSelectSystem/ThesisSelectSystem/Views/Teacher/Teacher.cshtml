@@ -48,14 +48,14 @@
                         <li>
                             <button class="btn btn3">自拟课题<img id="more" src="~/img/more.png" /></button>
                             <ul id="liebiao1">
-                                <li><button class="btn btn4"><span class="glyphicon glyphicon-plus"></span>未选择的学生</button></li>
+                                <li><button class="btn btn4" id="un-selected-student1"><span class="glyphicon glyphicon-plus"></span>未选择的学生</button></li>
                                 <li><button class="btn btn4"><span class="glyphicon glyphicon-plus"></span>已选择学生列表</button></li>
                             </ul>
                         </li>
                         <li>
                             <button class="btn btn3">教师拟题<img id="more" src="~/img/more.png" /></button>
                             <ul id="liebiao2">
-                                <li><button class="btn btn4"><span class="glyphicon glyphicon-plus"></span>未选择的学生</button></li>
+                                <li><button class="btn btn4" id="un-selected-student2"><span class="glyphicon glyphicon-plus"></span>未选择的学生</button></li>
                                 <li><button class="btn btn4"><span class="glyphicon glyphicon-plus"></span>已选择学生列表</button></li>
                             </ul>
                         </li>
@@ -111,8 +111,20 @@
 								<form action="#" method="post">
 									<table id="student2" cellspacing="20">
 										<caption>未选择学生列表</caption>
-										<tr><th class="th1">序号</th><th class="th1">学生姓名</th><th class="th2">课题名称</th><th class="th1">选择该学生</th></tr>
-										<tr><td class="th1">001</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
+									    <tr>
+									        <th class="th1">序号</th>
+									        <th class="th1">学生姓名</th>
+									        <th class="th2">课题名称</th>
+									        <th class="th1">选择该学生</th>
+									    </tr>
+
+									    <tr>
+									        <td class="th1">001</td>
+									        <td class="th1">梁婉玲</td>
+									        <td class="th2">基于H5的小游戏设置平台</td>
+									        <td class="th1"><input type="checkbox" value=""/></td>
+									    </tr>
+
 										<tr><td class="th1">002</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
 										<tr><td class="th1">003</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
 										<tr><td class="th1">004</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
@@ -124,7 +136,12 @@
 										<tr><td class="th1">010</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
 								</table>
 								</form>
-								<div class="button"><button class="btn btn-success">确认提交</button></div>
+							    <div class="button"><button class="btn btn-success">确认提交</button>
+							    </div>
+							   
+							    <div>  
+							        <div class="tcdPageCode1"></div>
+							    </div>
 							</div>
 							
 						</div>
@@ -147,7 +164,7 @@
 								    </table>	
 							    </form>
 							    <div>
-								    <div class="tcdPageCode"></div>
+								    <div class="tcdPageCode2"></div>
 							    </div>
 							</div>
 						</div>
@@ -158,19 +175,21 @@
 									<table id="student5" cellspacing="20">
 										<caption>未选择学生列表</caption>
 										<tr><th class="th1">序号</th><th class="th1">学生姓名</th><th class="th2">课题名称</th><th class="th1">选择该学生</th></tr>
-										<tr><td class="th1">001</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">002</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">003</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">004</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">005</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">006</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">007</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">008</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">009</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">010</td><td class="th1">陈志桓</td><td class="th2">毕业选题系统</td><td class="th1"><input type="checkbox" /></td></tr>
+									    <tr>
+									        <td class="th1">001</td>
+									        <td class="th1">陈志桓</td>
+									        <td class="th2">毕业选题系统</td>
+									        <td class="th1">
+									            <input type="checkbox"/>
+									        </td>
+									    </tr>
 								</table>
 								</form>
-								<div class="button"><button class="btn btn-success">确认提交</button></div>
+							    <div class="button"><button class="btn btn-success" id="select-student-btn">确认提交</button>
+							    </div>
+							    <div>
+                                    <div class="tcdPageCode3"></div>
+							    </div>
 							</div>
 							
 							
@@ -199,8 +218,8 @@
 								
 							</form>
 							<div>
-									<div class="tcdPageCode"></div>
-								</div>
+                                <div class="tcdPageCode4"></div>
+							</div>
 							</div>
 							</div>
 					</div>
@@ -210,7 +229,7 @@
                         <div class="topic1">
                             <form action="#" method="post">
                                 <table>
-                                    <caption>审核已通过课题列表</caption>
+                                    <caption>通过审核的课题列表</caption>
                                     <tr><th class="th3">拟题人</th><th class="th3">课题名称</th><th class="th4">课题来源</th><th class="th5">课题类型</th><th class="th4">适用年份</th></tr>
                                     <tr><td class="th3">001</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
                                     <tr><td class="th3">002</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
@@ -401,7 +420,7 @@
                         </form>
                     </div>
                     <div>
-                        <div class="tcdPageCode"></div>
+                        <div class="tcdPageCode5"></div>
                     </div>
                 </div>
             </div>

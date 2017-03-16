@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 using System.Xml;
+using ThesisSelectSystem.Models;
 
 namespace ThesisSelectSystem.DAL
 {

@@ -214,12 +214,12 @@ header{
 	
 }
 .button{
-	padding: 6% 5% 10% 70%;
+	padding: 3% 5% 0 70%;
 }
 
 .student3 table{
-	background-color: #DDFFDD;
-	border-radius: 5%;
+	/*background-color: #DDFFDD;*/
+	border-radius: 3%;
 
 }
 .manage{
@@ -309,13 +309,13 @@ header{
 	border-radius: 3%;
 }
 
-.tcdPageCode{
+.tcdPageCode,.tcdPageCode1,.tcdPageCode2,.tcdPageCode3,.tcdPageCode4,.tcdPageCode5{
 	padding: 15px 20px;
 	text-align: left;
 	color: #ccc;
 	text-align:center;
 	}
-.tcdPageCode a{
+.tcdPageCode a,.tcdPageCode1 a,.tcdPageCode2 a,.tcdPageCode3 a,.tcdPageCode4 a,.tcdPageCode5 a{
 	display: inline-block;
 	color: #428bca;
 	display: inline-block;
@@ -327,11 +327,11 @@ header{
 	border-radius: 4px;
 	vertical-align: middle;
 	}
-.tcdPageCode a:hover{
+.tcdPageCode a:hover, .tcdPageCode1 a:hover,.tcdPageCode2 a:hover,.tcdPageCode3 a:hover,.tcdPageCode4 a:hover,.tcdPageCode5 a:hover{
 	text-decoration: none;
 	border: 1px solid #428bca;
 	}
-.tcdPageCode span.current{
+.tcdPageCode span.current,.tcdPageCode1 span.current,.tcdPageCode2 span.current,.tcdPageCode3 span.current,.tcdPageCode4 span.current,.tcdPageCode5 span.current{
 	display: inline-block;
 	height: 25px;
 	line-height: 25px;
@@ -343,7 +343,7 @@ header{
 	border-radius: 4px;
 	vertical-align: middle;
 	}
-.tcdPageCode span.disabled{	
+.tcdPageCode span.disabled ,.tcdPageCode1 span.disabled,.tcdPageCode2 span.disabled,.tcdPageCode3 span.disabled,.tcdPageCode4 span.disabled,.tcdPageCode5 span.disabled{	
 	display: inline-block;
 	height: 25px;
 	line-height: 25px;

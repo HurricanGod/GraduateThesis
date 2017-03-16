@@ -11,7 +11,7 @@ using ThesisSelectSystem.Filter.HurricanFilter;
 using ThesisSelectSystem.Models;
 
 namespace ThesisSelectSystem.Controllers
-{    
+{
 
     //用于测试的控制器
     [SystemAdminActionFilter]

@@ -143,7 +143,6 @@
     <Content Include="Scripts\SystemAdministrator\ajaxfileupload.js" />
     <Content Include="Scripts\SystemAdministrator\bootstrap-select.js" />
     <Content Include="Scripts\SystemAdministrator\jquery.js" />
-    <Content Include="Scripts\SystemAdministrator\MajorManage.js" />
     <Content Include="Scripts\SystemAdministrator\system-administrator.js" />
     <Content Include="Scripts\SystemAdministrator\wangEditor.js" />
     <Content Include="Scripts\teacher.js" />
@@ -164,6 +163,7 @@
     <Compile Include="BLL\Anouncement_bll.cs" />
     <Compile Include="BLL\ClassManage_Bll.cs" />
     <Compile Include="BLL\ExcelFileBusinessOperation.cs" />
+    <Compile Include="BLL\ThesisManage_bll.cs" />
     <Compile Include="BLL\UserLogin_bll.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
@@ -173,6 +173,7 @@
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SystemAdminController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="DAL\CommomQuery.cs" />
     <Compile Include="DAL\DbOperation.cs" />
     <Compile Include="DAL\MyHelp\ClassesTableHelper.cs" />
     <Compile Include="DAL\MyHelp\DepartmentTableHelper.cs" />
@@ -182,7 +183,7 @@
     <Compile Include="DAL\SqlHelper.cs" />
     <Compile Include="DAL\ThesisDal.cs" />
     <Compile Include="DAL\User_dal.cs" />
-    <Compile Include="Filter\HurricanFilter\LoginActionFilterAttribute.cs" />
+    <Compile Include="Filter\HurricanFilter\IdentityActionFilterAttribute.cs" />
     <Compile Include="Filter\HurricanFilter\StudentActionFilterAttribute.cs" />
     <Compile Include="Filter\HurricanFilter\SystemAdminActionFilterAttribute.cs" />
     <Compile Include="Filter\HurricanFilter\TeacherActionFilterAttribute.cs" />
@@ -191,9 +192,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChooseTeacherThesisRowMapper.cs" />
     <Compile Include="Models\ClassesModels.cs" />
+    <Compile Include="Models\IRowMapper.cs" />
     <Compile Include="Models\MajorModel.cs" />
     <Compile Include="Models\RegexMessage\RegexInfo.cs" />
+    <Compile Include="Models\ChooseTeacherThesis.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

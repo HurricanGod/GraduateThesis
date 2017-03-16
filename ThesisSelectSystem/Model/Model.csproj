@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Announcement.cs" />
     <Compile Include="Classes.cs" />
     <Compile Include="PartOfThesis.cs" />
@@ -45,6 +42,11 @@
     <Compile Include="Teacher.cs" />
     <Compile Include="Thesis.cs" />
     <Compile Include="UserInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

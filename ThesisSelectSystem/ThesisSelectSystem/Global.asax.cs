@@ -13,6 +13,7 @@ namespace ThesisSelectSystem
         protected void Application_Start()
         {
             Application["userYear"] = 2018;
+            Application["pastWeight"] = 6;
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

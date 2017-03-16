@@ -21,7 +21,6 @@ namespace Model
         public int currentChoosedNumber { get; set; }
         public string topicType { get; set; }
         public int usingYear { get; set; }
-        public string guideTeacherId { get; set; }
         public int isChoice { get; set; }
 
         public Thesis()

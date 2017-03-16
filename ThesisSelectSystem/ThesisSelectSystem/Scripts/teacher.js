@@ -22,6 +22,9 @@ $(document).ready(function () {
         $(".wode").hide();
         $(".zini1").hide();
         $(".wode1").hide();
+        $(".protocol").hide();
+        $(".thesistitle").hide();
+        $(".manage").hide();
     });
     $('.navigation button').eq(3).click(function () {
         $(".selectstudent").show();
@@ -29,6 +32,9 @@ $(document).ready(function () {
         $(".wode").hide();
         $(".zini1").show();
         $(".wode1").hide();
+        $(".protocol").hide();
+        $(".thesistitle").hide();
+        $(".manage").hide();
     });
 
     $('.navigation button').eq(4).click(function () {
@@ -40,6 +46,9 @@ $(document).ready(function () {
         $(".zini").hide();
         $(".wode1").hide();
         $(".zini1").hide();
+        $(".protocol").hide();
+        $(".thesistitle").hide();
+        $(".manage").hide();
     });
     $('.navigation button').eq(6).click(function () {
         $(".selectstudent").show();
@@ -47,6 +56,9 @@ $(document).ready(function () {
         $(".wode").hide();
         $(".zini").hide();
         $(".wode1").show();
+        $(".protocol").hide();
+        $(".thesistitle").hide();
+        $(".manage").hide();
     });
     $('.navigation button').eq(7).click(function () {
         $("#topic1").toggle(200);
@@ -117,30 +129,96 @@ $(document).ready(function () {
         }
     });
 
+    $(".tcdPageCode2").createPage({//自拟课题已选学生的分页
+        pageCount: 5,//一共有多少页
+        current: 1,//当前页
+        backFn: function (p) {
+            console.log(p);
+        }
+    });
+    $(".tcdPageCode3").createPage({//我拟课题未选学生的分页
+        pageCount: 6,//一共有多少页
+        current: 1,//当前页
+        backFn: function (p) {
+            console.log(p);
+        }
+    });
+    $(".tcdPageCode4").createPage({//我拟课题已选学生的分页
+        pageCount: 8,//一共有多少页
+        current: 1,//当前页
+        backFn: function (p) {
+            console.log(p);
+        }
+    });
+    $(".tcdPageCode5").createPage({//审题页面的分页
+        pageCount: thesisCount(),//一共有多少页
+        current: 1,//当前页
+        backFn: function (p) {
+            console.log(p);
+        }
+    });
+
     var rows = $("#un-examine-thesis").find("tr:gt(0)");
+    var rowCount = 7;
     for (var i = 0; i < rows.length; i++) {
-        if (i >8) {
+        if (i >rowCount) {
             rows.eq(i).hide();
         } else {
             rows.eq(i).show();
         }
     }
-});
 
+    function thesisCount() {
+        var count = $("#un-examine-thesis").find("tr:gt(0)").length;
+        var rowCount = 7;
+        count = count / rowCount+1;
+        return parseInt(count);
+    }
+
+
+    var url = "/Teacher/QueryChooseTeacherThesisInfo";
+    var data = new Object();
+    function success(data) {
+        var table = $("#student5");
+        for (var i = 0; i < data.length; i++) {
+            var row = $("<tr></tr>").attr("name", "unselected1");
+
+            var td1 = $("<td></td>").text(parseInt(i + 1)).attr("class", "th1");
+            var td2 = $("<td></td>").text(data[i].sname).attr("class", "th1");
+            var td3 = $("<td></td>").text(data[i].title).attr("id", data[i].thesisId).attr("class", "th2");
+            var td4 = $("<td></td>").attr("class", "th1");
+            var input = $("<input type='checkbox'/>").attr("value", data[i].sno).attr("name", data[i].thesisId);
+            input.appendTo(td4);
+            td1.appendTo(row);
+            td2.appendTo(row);
+            td3.appendTo(row);
+            td4.appendTo(row);
+            row.appendTo(table);
+        }
+
+    }
+    function error(textStatus, errorThrown) {
+        alert("状态：" + textStatus + "\n异常：" + errorThrown);
+    }
+
+    myPostAjax(url, data, success, error);
+
+});
+//-----------------------------------------------------------------------------------------
 
 
 
    
     var teacherThesisCount = $("#teacher-thesis").find("tr").length - 1;//论题记录总数
     var number = 6;//用于设置每页的记录数目
-    //设置前一页按钮不可点击，页面加载后默认为首页
+    //设置教师删除论题页面里的前一页按钮不可点击，页面加载后默认为首页
     $("#prev-page-thesis").attr('disabled', true).attr("value", 0);
     $("#next-page-thesis").attr("value", number);
     for (var i = number, rowName = "#ThesisRow"; i < teacherThesisCount; i++) {
         $(rowName + i).hide();
     }
 
-    //注册点击“首页”按钮事件
+    //注册教师删除论题页面点击“首页”按钮事件
     $("#home-page-thesis").click(function() {
         var rowName = "#ThesisRow";
         for (var j = 0; j < teacherThesisCount; j++) {
@@ -155,7 +233,7 @@ $(document).ready(function () {
     });
 
 
-    //注册点击“下一页”按钮事件
+    //注册教师删除论题页面点击“下一页”按钮事件
     $("#next-page-thesis").click(function() {
         var end = $(this).attr("value");
         var start = $("#prev-page-thesis").attr("value");
@@ -182,7 +260,7 @@ $(document).ready(function () {
     });
 
 
-    //注册点击“上一页”按钮事件
+    //注册教师删除论题页面点击“上一页”按钮事件
     $("#prev-page-thesis").click(function() {
         var rowName = "#ThesisRow";
         var start = $(this).attr("value");
@@ -207,7 +285,7 @@ $(document).ready(function () {
     });
 
 
-    //注册点击“尾页”按钮事件
+    //注册教师删除论题页面点击“尾页”按钮事件
     $("#last-page-thesis").click(function () {
         var a = parseFloat(teacherThesisCount / number);//a表示页数-1
         var c = a > parseInt(a) ? (parseInt(a) + 1) * number : parseInt(a) * number;
@@ -225,7 +303,7 @@ $(document).ready(function () {
     });
 
 
-    //注册“删除”按钮事件
+    //注册教师删除论题页面“删除”按钮事件
     $("button[name='delete-thesis']").each(function() {
         $(this).click(function () {
             //event.preventDefault();
@@ -284,10 +362,29 @@ $("#submit").click(function () {
 
 });
 
+//------------------------------------------------------
+//---------------2017年3月14日 22:07:30-----------------
+//------------------------------------------------------
+$("#select-student-btn").click(function() {
+    var items = $("#student2").find("input:checked");
 
+});
+
+
+//------------------------------------------------------
+//---------------2017年3月16日 15:26:43-----------------
+//------------------------------------------------------
+
+$("#un-selected-student2").click(function () {
+   
+});
+//------------------------------------------------------
+//---------------2017年3月16日 15:26:43-----------------
+//------------------------------------------------------
 function startRequest() {
     $(".realtime").text((new Date()).toLocaleString());
 }
+
 
 function myUniversalAjax(type, url, data, dataType, successFunction, errorFunction) {
     $.ajax({
@@ -379,9 +476,7 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                     if (typeof (args.backFn) == "function") {
                         args.backFn(current);
                     }
-                    
-                    //.slice(current*5, current*5+5)
-                    
+                     
                     var rows = $("#un-examine-thesis").find("tr:gt(0)");
                     for (var i = 0; i < rows.length; i++) {
                         if (i < (current-1) * count || i > current * count) {
@@ -398,6 +493,15 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                     if (typeof (args.backFn) == "function") {
                         args.backFn(current - 1);
                     }
+                    var rows = $("#un-examine-thesis").find("tr:gt(0)");
+                    var count = 7;//待审课题每页的行数
+                    for (var i = 0; i < rows.length; i++) {
+                        if (i < (current-2) * count || i > (current-1) * count) {
+                            rows.eq(i).hide();
+                        } else {
+                            rows.eq(i).show();
+                        }
+                    }
                 });
                 //下一页
                 obj.on("click", "a.nextPage", function () {
@@ -406,6 +510,17 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                     if (typeof (args.backFn) == "function") {
                         args.backFn(current + 1);
                     }
+
+                    var rows = $("#un-examine-thesis").find("tr:gt(0)");
+                    var count = 7;//待审课题每页的行数
+                    for (var i = 0; i < rows.length; i++) {
+                        if (i < (current) * count || i > (current+1) * count) {
+                            rows.eq(i).hide();
+                        } else {
+                            rows.eq(i).show();
+                        }
+                    }
+
                 });
             })();
         }

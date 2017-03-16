@@ -20,8 +20,8 @@ namespace ThesisSelectSystem.Filter.HurricanFilter
             }
             else
             {
-                UserInfo user = User_dal.GetPswAndRoleAndSaltModel(account);
-                if (user.roles!="教师"&& user.roles != "审题员")
+                string role = (string)filterContext.HttpContext.Session["Role"];
+                if (role.IsEmpty()||!role.Equals("教师"))
                 {
                     filterContext.Result = new RedirectResult("/Login/STLogin");
                 }

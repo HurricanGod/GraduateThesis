@@ -5,8 +5,10 @@ using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using Model;
+using ThesisSelectSystem.BLL;
 using ThesisSelectSystem.DAL;
 using ThesisSelectSystem.Filter.HurricanFilter;
+using ThesisSelectSystem.Models;
 
 namespace ThesisSelectSystem.Controllers
 {
@@ -115,6 +117,49 @@ namespace ThesisSelectSystem.Controllers
         public ActionResult ChooseStudents()
         {
             return Json(new {});
+        }
+
+
+
+        /// <summary>
+        /// 时间：2017年3月14日 19:38:27
+        /// 审题员审题，主要业务存放在数据库的存储过程中，审题步骤如下：
+        /// 1.获取全局变量passWeight，该变量表示论题通过审核需要最低的分数
+        /// 2.获取审题员id
+        /// 3.事务操作：保存审题员的审题记录、更新论题状态信息
+        /// 4.返回数据库操作结果
+        /// </summary>
+        /// <param name="advice"></param>
+        /// <param name="isPass"></param>
+        /// <param name="thesisId"></param>
+        /// <returns></returns>
+        [IdentityActionFilter(Order = 2)]
+        public ActionResult CheckThesis(string advice,string isPass,string thesisId)
+        {
+            int passWeight = Convert.ToInt32(HttpContext.Application["pastWeight"]);
+            string analyzerId = Convert.ToString(Session["Account"]);
+            string identity = (string)Session["Identity"];
+            var thesisBll=new ThesisManage_bll();
+            bool res = thesisBll.AnalyzeThesis(advice, isPass, thesisId, passWeight, analyzerId,identity,3);
+
+            if (res)
+            {
+                return Json(new { tip = "审核完成" });
+            }
+            else
+            {
+                return Json(new { tip = "事务操作失败" });
+            }
+            
+        }
+
+        public ActionResult QueryChooseTeacherThesisInfo()
+        {
+            var usingYear = HttpContext.Application["userYear"];
+            var teacherId = Session["Account"];
+            Object[] args = new[] {usingYear, teacherId, "否" };
+            List<ChooseTeacherThesis> resultList = new ThesisManage_bll().QueryChooseTeacherThesisInfo("QueryUnDrawUpThesis", args);
+            return Json(resultList);
         }
 
     }

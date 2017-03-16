@@ -4,7 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Model;
+using ThesisSelectSystem.Models;
 
 namespace ThesisSelectSystem.DAL
 {
@@ -92,6 +94,12 @@ namespace ThesisSelectSystem.DAL
                 
             }
             return thesisList;
+        }
+
+        public List<ChooseTeacherThesis> QueryChooseTeacherThesisInfo(string proc, SqlParameter[] args)
+        {
+            CommomQuery < ChooseTeacherThesis > query= new CommomQuery<ChooseTeacherThesis>();
+            return query.ProcedureQueryToList(proc, args, new ChooseTeacherThesisRowMapper());
         } 
 
     }

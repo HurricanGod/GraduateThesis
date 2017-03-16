@@ -17,7 +17,6 @@ namespace Model
         public int guideStudentNumber { get; set; }
         public string educationRoom { get; set; }
         public int departmentId { get; set; }
-        public string account { get; set; }
         public string specialIdentity { get; set; }
         public int maxMakeTopicNumber { get; set; }
         public string topicGroup { get; set; }
