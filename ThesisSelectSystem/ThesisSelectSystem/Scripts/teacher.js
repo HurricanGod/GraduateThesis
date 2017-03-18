@@ -130,21 +130,21 @@ $(document).ready(function () {
     });
 
     $(".tcdPageCode2").createPage({//自拟课题已选学生的分页
-        pageCount: 5,//一共有多少页
+        pageCount: countStudent2Page(),//一共有多少页
         current: 1,//当前页
         backFn: function (p) {
             console.log(p);
         }
     });
-    $(".tcdPageCode3").createPage({//我拟课题未选学生的分页
-        pageCount: 6,//一共有多少页
+    $(".tcdPageCode3").createPage({//教师拟题未选学生的分页
+        pageCount: chooseTeacherThesisCount(),//一共有多少页
         current: 1,//当前页
         backFn: function (p) {
             console.log(p);
         }
     });
     $(".tcdPageCode4").createPage({//我拟课题已选学生的分页
-        pageCount: 8,//一共有多少页
+        pageCount: countStudent1Page(),//一共有多少页
         current: 1,//当前页
         backFn: function (p) {
             console.log(p);
@@ -158,6 +158,8 @@ $(document).ready(function () {
         }
     });
 
+    //------------------进行审题->未审论题列表页面初始化-------------------------
+    //------------------2017年3月16日 16:55:46-----------------------------------
     var rows = $("#un-examine-thesis").find("tr:gt(0)");
     var rowCount = 7;
     for (var i = 0; i < rows.length; i++) {
@@ -168,14 +170,42 @@ $(document).ready(function () {
         }
     }
 
-    function thesisCount() {
-        var count = $("#un-examine-thesis").find("tr:gt(0)").length;
-        var rowCount = 7;
-        count = count / rowCount+1;
-        return parseInt(count);
+    //------------------教师拟题->未选择学生->未选择学生列表页面初始化-----------
+    //------------------2017年3月16日 16:55:46-----------------------------------
+    var chooseThesisInfo = $("#student5").find("tr:gt(0)");
+    for (var i = 0; i < chooseThesisInfo.length; i++) {
+        if (i > rowCount) {
+            chooseThesisInfo.eq(i).hide();
+        } else {
+            chooseThesisInfo.eq(i).show();
+        }
+    }
+   
+    
+    //---------------教师拟题->已选择学生列表->指定每页学生记录条数---------
+    //---------------------2017年3月16日 22:19:22---------------------------
+    var hasBeenChoosedUnMakeTopicStudent = $("#student6").find("tr:gt(0)");
+    for (var i = 0; i < hasBeenChoosedUnMakeTopicStudent.length; i++) {
+        if (i > rowCount) {
+            hasBeenChoosedUnMakeTopicStudent.eq(i).hide();
+        } else {
+            hasBeenChoosedUnMakeTopicStudent.eq(i).show();
+        }
     }
 
+    //---------------学生拟题->已选择学生列表->指定每页学生记录条数---------
+    //---------------------2017年3月16日 22:19:22---------------------------
+    var makeTopicStudentCount = $("#student4").find("tr:gt(0)");
+    for (var i = 0; i < makeTopicStudentCount.length; i++) {
+        if (i > rowCount) {
+            makeTopicStudentCount.eq(i).hide();
+        } else {
+            makeTopicStudentCount.eq(i).show();
+        }
+    }
+   
 
+    //
     var url = "/Teacher/QueryChooseTeacherThesisInfo";
     var data = new Object();
     function success(data) {
@@ -197,14 +227,59 @@ $(document).ready(function () {
         }
 
     }
-    function error(textStatus, errorThrown) {
-        alert("状态：" + textStatus + "\n异常：" + errorThrown);
-    }
+   
 
     myPostAjax(url, data, success, error);
 
+    //---------------------计算论题审核未通过的总数------------------------
+    //----------------------2017年3月16日 22:30:56-------------------------
+    function thesisCount() {
+        var count = $("#un-examine-thesis").find("tr:gt(0)").length;
+        var rowCount = 7;
+        count = count / rowCount + 1;
+        return parseInt(count);
+    }
+
+    //----------------计算选择了某教师为指导老师的所有学生数目-------------
+    //----------------------2017年3月16日 22:30:56-------------------------
+    function chooseTeacherThesisCount() {
+        var stuCount1 = $("#student5").find("tr:gt(0)").length;
+        if (parseInt(stuCount1)%7==0) {
+            return parseInt(stuCount1 / 7);
+        } else {
+            return parseInt((stuCount1 / 7)+1);
+        }
+        
+    }
+
+    //----------------计算某教师已确定的指导学生数目及页数-------------
+    //----------------------2017年3月16日 22:30:56-------------------------
+    function countStudent1Page() {
+        var total = parseInt($("#student6").find("tr:gt(0)").length);
+        if (parseInt(total) % 7 == 0) {
+            return parseInt(total / 7);
+        } else {
+            return parseInt((total / 7) + 1);
+        }
+    }
+
+    //----------------计算选了某老师的自拟题学生数目及页数-----------------
+    //----------------------2017年3月16日 22:30:56-------------------------
+    function countStudent2Page() {
+        var total = parseInt($("#student4").find("tr:gt(0)").length);
+        if (parseInt(total) % 7 == 0) {
+            return parseInt(total / 7);
+        } else {
+            return parseInt((total / 7) + 1);
+        }
+    }
+    //-----------------------ajax网络错误回调函数--------------------------
+    //----------------------2017年3月16日 22:30:56-------------------------
+    function error(textStatus, errorThrown) {
+        alert("状态：" + textStatus + "\n异常：" + errorThrown);
+    }
 });
-//-----------------------------------------------------------------------------------------
+//-----------------------------$.ready()函数分割线--------------------------------------------------------
 
 
 
@@ -349,6 +424,8 @@ $("#submit").click(function () {
 
     function success(data) {
         alert(data.tip);
+        $("#thesis-name").val("");
+        $("#thesis-detail").val("");
     };
 
     function error(data) {
@@ -371,16 +448,7 @@ $("#select-student-btn").click(function() {
 });
 
 
-//------------------------------------------------------
-//---------------2017年3月16日 15:26:43-----------------
-//------------------------------------------------------
 
-$("#un-selected-student2").click(function () {
-   
-});
-//------------------------------------------------------
-//---------------2017年3月16日 15:26:43-----------------
-//------------------------------------------------------
 function startRequest() {
     $(".realtime").text((new Date()).toLocaleString());
 }
@@ -471,18 +539,52 @@ function myPostAjax(url, data,successFunction, errorFunction) {
             return (function () {
                 obj.on("click", "a.tcdNumber", function () {
                     var current = parseInt($(this).text());
-                    var count = 7;//待审课题每页的行数
                     ms.fillHtml(obj, { "current": current, "pageCount": args.pageCount });
                     if (typeof (args.backFn) == "function") {
                         args.backFn(current);
                     }
-                     
-                    var rows = $("#un-examine-thesis").find("tr:gt(0)");
+                    var count = 7;//待审课题每页的行数
+                    //------------------审题页面论题分页------------------
+                    var rows = $("#un-examine-thesis").find("tr:gt(0)"); 
                     for (var i = 0; i < rows.length; i++) {
                         if (i < (current-1) * count || i > current * count) {
                             rows.eq(i).hide();
                         } else {
                             rows.eq(i).show();
+                        }
+                    }
+                   
+                    
+                    //------------------教师拟题->未选择学生->未选择学生列表分页------------------
+                    //----------------------2017年3月16日 16:55:46--------------------------------
+                    var chooseThesisInfo = $("#student5").find("tr:gt(0)");
+                    for (var i = 0; i < chooseThesisInfo.length; i++) {
+                        if (i < (current - 1) * count || i > current * count) {
+                            chooseThesisInfo.eq(i).hide();
+                        } else {
+                            chooseThesisInfo.eq(i).show();
+                        }
+                    }
+
+                    //-------------------教师拟题->已选择的学生列表->分页--------------------------
+                    //----------------------2017年3月16日 23:05:04---------------------------------
+                    var hasBeenChoosedUnMakeTopicStudent = $("#student6").find("tr:gt(0)");
+                    for (var i = 0; i < hasBeenChoosedUnMakeTopicStudent.length; i++) {
+                        if (i < (current - 1) * count || i > current * count) {
+                            hasBeenChoosedUnMakeTopicStudent.eq(i).hide();
+                        } else {
+                            hasBeenChoosedUnMakeTopicStudent.eq(i).show();
+                        }
+                    }
+
+                    //-------------------学生拟题->已选择的学生列表->分页--------------------------
+                    //----------------------2017年3月16日 23:05:04---------------------------------
+                    var makeTopicStudentCount = $("#student4").find("tr:gt(0)");
+                    for (var i = 0; i < makeTopicStudentCount.length; i++) {
+                        if (i < (current - 1) * count || i > current * count) {
+                            makeTopicStudentCount.eq(i).hide();
+                        } else {
+                            makeTopicStudentCount.eq(i).show();
                         }
                     }
                 });
@@ -493,6 +595,8 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                     if (typeof (args.backFn) == "function") {
                         args.backFn(current - 1);
                     }
+                    //------------------审题页面上一页点击事件------------------
+                    //------------------2017年3月16日 23:06:48------------------
                     var rows = $("#un-examine-thesis").find("tr:gt(0)");
                     var count = 7;//待审课题每页的行数
                     for (var i = 0; i < rows.length; i++) {
@@ -500,6 +604,41 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                             rows.eq(i).hide();
                         } else {
                             rows.eq(i).show();
+                        }
+                    }
+                    
+                    
+                    //------------------教师拟题->未选择学生->未选择学生列表->上一页点击事件------------------
+                    //-----------------------2017年3月16日 23:07:43-------------------------------------------
+                    var chooseThesisInfo = $("#student5").find("tr:gt(0)");
+                    for (var i = 0; i < chooseThesisInfo.length; i++) {
+                        if (i < (current - 2) * count || i > (current - 1) * count) {
+                            chooseThesisInfo.eq(i).hide();
+                        } else {
+                            chooseThesisInfo.eq(i).show();
+                        }
+                    }
+                   
+
+                    //----------------教师拟题->已选择的学生列表->点击上一页事件-------------------
+                    //----------------------2017年3月16日 23:05:04---------------------------------
+                    var hasBeenChoosedUnMakeTopicStudent = $("#student6").find("tr:gt(0)");
+                    for (var i = 0; i < hasBeenChoosedUnMakeTopicStudent.length; i++) {
+                        if (i < (current - 2) * count || i > (current - 1) * count) {
+                            hasBeenChoosedUnMakeTopicStudent.eq(i).hide();
+                        } else {
+                            hasBeenChoosedUnMakeTopicStudent.eq(i).show();
+                        }
+                    }
+
+                    //----------------学生拟题->已选择的学生列表->点击上一页事件-------------------
+                    //----------------------2017年3月16日 23:05:04---------------------------------
+                    var makeTopicStudentCount = $("#student4").find("tr:gt(0)");
+                    for (var i = 0; i < makeTopicStudentCount.length; i++) {
+                        if (i < (current - 2) * count || i > (current - 1) * count) {
+                            makeTopicStudentCount.eq(i).hide();
+                        } else {
+                            makeTopicStudentCount.eq(i).show();
                         }
                     }
                 });
@@ -510,7 +649,8 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                     if (typeof (args.backFn) == "function") {
                         args.backFn(current + 1);
                     }
-
+                    //------------------审题页面下一页点击事件------------------
+                    //------------------2017年3月16日 23:11:07------------------
                     var rows = $("#un-examine-thesis").find("tr:gt(0)");
                     var count = 7;//待审课题每页的行数
                     for (var i = 0; i < rows.length; i++) {
@@ -520,7 +660,42 @@ function myPostAjax(url, data,successFunction, errorFunction) {
                             rows.eq(i).show();
                         }
                     }
+                    
 
+                    //------------------教师拟题->未选择学生->未选择学生列表->点击下一页事件--------
+                    //--------------------------2017年3月16日 23:11:34------------------------------
+                    var chooseThesisInfo = $("#student5").find("tr:gt(0)");
+                    for (var i = 0; i < chooseThesisInfo.length; i++) {
+                        if (i < (current - 2) * count || i > (current - 1) * count) {
+                            chooseThesisInfo.eq(i).hide();
+                        } else {
+                            chooseThesisInfo.eq(i).show();
+                        }
+                    }
+                    
+
+
+                    //----------------教师拟题->已选择的学生列表->点击下一页事件-------------------
+                    //----------------------2017年3月16日 23:05:04---------------------------------
+                    var hasBeenChoosedUnMakeTopicStudent = $("#student6").find("tr:gt(0)");
+                    for (var i = 0; i < hasBeenChoosedUnMakeTopicStudent.length; i++) {
+                        if (i < (current - 2) * count || i > (current - 1) * count) {
+                            hasBeenChoosedUnMakeTopicStudent.eq(i).hide();
+                        } else {
+                            hasBeenChoosedUnMakeTopicStudent.eq(i).show();
+                        }
+                    }
+
+                    //----------------学生拟题->已选择的学生列表->点击下一页事件-------------------
+                    //----------------------2017年3月16日 23:05:04---------------------------------
+                    var makeTopicStudentCount = $("#student4").find("tr:gt(0)");
+                    for (var i = 0; i < makeTopicStudentCount.length; i++) {
+                        if (i < (current - 2) * count || i > (current - 1) * count) {
+                            makeTopicStudentCount.eq(i).hide();
+                        } else {
+                            makeTopicStudentCount.eq(i).show();
+                        }
+                    }
                 });
             })();
         }

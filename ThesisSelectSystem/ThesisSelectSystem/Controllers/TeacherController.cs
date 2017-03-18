@@ -153,6 +153,10 @@ namespace ThesisSelectSystem.Controllers
             
         }
 
+        /// <summary>
+        /// 查询毕业年份为usingYear、选择了编号为teacherId的老师作为指导老师的所有非自拟题学生姓名及毕业论题名称
+        /// </summary>
+        /// <returns></returns>
         public ActionResult QueryChooseTeacherThesisInfo()
         {
             var usingYear = HttpContext.Application["userYear"];

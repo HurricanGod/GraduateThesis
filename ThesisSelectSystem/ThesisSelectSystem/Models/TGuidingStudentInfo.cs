@@ -5,14 +5,11 @@ using System.Web;
 
 namespace ThesisSelectSystem.Models
 {
-    public class ChooseTeacherThesis
+    public class TGuidingStudentInfo
     {
-        public string sno { get; set; }
         public string sname { get; set; }
-        public Int64  thesisId{ get; set; }
-        public string title { get; set; }
-
+        public string className { get; set; }
+        public string thesisName { get; set; }
+        public string thesiSourcs { get; set; }
     }
-
-
 }

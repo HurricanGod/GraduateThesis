@@ -194,10 +194,12 @@
     </Compile>
     <Compile Include="Models\ChooseTeacherThesisRowMapper.cs" />
     <Compile Include="Models\ClassesModels.cs" />
+    <Compile Include="Models\GuideStudentTableRowMapper.cs" />
     <Compile Include="Models\IRowMapper.cs" />
     <Compile Include="Models\MajorModel.cs" />
     <Compile Include="Models\RegexMessage\RegexInfo.cs" />
     <Compile Include="Models\ChooseTeacherThesis.cs" />
+    <Compile Include="Models\TGuidingStudentInfo.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
