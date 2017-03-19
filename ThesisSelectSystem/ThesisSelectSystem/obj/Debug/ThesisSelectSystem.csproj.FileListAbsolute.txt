@@ -87,3 +87,5 @@ D:\GitRepository\GraduateThesis\ThesisSelectSystem\ThesisSelectSystem\bin\zh-Han
 D:\GitRepository\GraduateThesis\ThesisSelectSystem\ThesisSelectSystem\obj\Debug\ThesisSelectSystem.csprojResolveAssemblyReference.cache
 D:\GitRepository\GraduateThesis\ThesisSelectSystem\ThesisSelectSystem\obj\Debug\ThesisSelectSystem.dll
 D:\GitRepository\GraduateThesis\ThesisSelectSystem\ThesisSelectSystem\obj\Debug\ThesisSelectSystem.pdb
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\ThesisSelectSystem\bin\Newtonsoft.Json.dll
+D:\GitRepository\GraduateThesis\ThesisSelectSystem\ThesisSelectSystem\bin\Newtonsoft.Json.xml

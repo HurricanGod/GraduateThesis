@@ -58,5 +58,36 @@ namespace ThesisSelectSystem.BLL
             SqlParameter[] args = new[] {yearParameter, teacherIdParameter, isAgreeParameter};
             return chooseThesisDal.QueryChooseTeacherThesisInfo(proc, args);
         }
+
+        /// <summary>
+        /// 查询教师已经同意指导非自拟题学生的姓名、班级、论题名、论题来源
+        /// </summary>
+        /// <param name="year">论题的使用年份</param>
+        /// <param name="guiderId">教师ID</param>
+        /// <returns></returns>
+        public List<TGuidingStudentInfo> QueryChoosedGuidingStudent(int year,string guiderId)
+        {
+            SqlParameter yearParameter=new SqlParameter("@year",year);
+            SqlParameter guiderIdParameter=new SqlParameter("@guiderId",guiderId);
+            return new ThesisDal().QueryChoosedGuidingStudent("HasChoosedStudentList", new SqlParameter[] {yearParameter, guiderIdParameter});
+
+        }
+
+        public bool ExecuteTeacherChooseStudentTran(string proc, string teacherid, List<SnoAndThesis> other)
+        {
+            int count = 0;
+            
+            foreach (SnoAndThesis o in other)
+            {
+                SqlParameter sno=new SqlParameter("@student_no", o.sno);
+                SqlParameter thesisid=new SqlParameter("@thesis_no",Convert.ToInt64(o.thesisid));
+                SqlParameter teacheridParameter = new SqlParameter("@tutor_no", teacherid);
+                count = new ThesisDal().ExecuteChooseStudentTran(proc,
+                    new SqlParameter[] {sno, teacheridParameter, thesisid})
+                    ? count + 1
+                    : count;
+            }
+            return count == other.Count ? true : false;
+        }
     }
 }

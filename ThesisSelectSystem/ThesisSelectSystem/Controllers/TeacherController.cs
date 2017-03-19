@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
-using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Mvc;
 using Model;
 using ThesisSelectSystem.BLL;
@@ -116,7 +116,19 @@ namespace ThesisSelectSystem.Controllers
         /// <returns></returns>
         public ActionResult ChooseStudents()
         {
-            return Json(new {});
+            var  temp = Request["data"];
+            string teacherId = (string)Session["Account"];
+            var list = JsonHelper.DeserializeJsonToList<SnoAndThesis>(temp);
+            bool res = new ThesisManage_bll().ExecuteTeacherChooseStudentTran("TeacherChooseStudent", teacherId, list);
+            if (res)
+            {
+                return Json(new { tip = "成功选取学生",students=list.Select(s=>s.sno).ToArray() });
+            }
+            else
+            {
+                return Json(new { tip = "有失败操作，请刷新网页查看最新结果" });
+            }
+            
         }
 
 
@@ -154,6 +166,7 @@ namespace ThesisSelectSystem.Controllers
         }
 
         /// <summary>
+        /// 2017年3月18日 23:04:36
         /// 查询毕业年份为usingYear、选择了编号为teacherId的老师作为指导老师的所有非自拟题学生姓名及毕业论题名称
         /// </summary>
         /// <returns></returns>
@@ -166,5 +179,17 @@ namespace ThesisSelectSystem.Controllers
             return Json(resultList);
         }
 
+        /// <summary>
+        /// 2017年3月18日 21:59:16
+        /// 查询教师已经同意指导非自拟题学生的姓名、班级、论题名、论题来源
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult QueryTeacherHasChoosedStudentWhoHasNotMadeThesis()
+        {
+            int year = Convert.ToInt32(HttpContext.Application["userYear"]);
+            string teacherId = (string)Session["Account"];
+            List<TGuidingStudentInfo> result = new ThesisManage_bll().QueryChoosedGuidingStudent(year, teacherId);
+            return Json(result);
+        }
     }
 }

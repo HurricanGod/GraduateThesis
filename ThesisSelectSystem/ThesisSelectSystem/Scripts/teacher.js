@@ -231,6 +231,31 @@ $(document).ready(function () {
 
     myPostAjax(url, data, success, error);
 
+    //-------------------添加教师拟题->已选择学生列表表格数据--------------
+    //---------------------2017年3月18日 22:10:59--------------------------
+    var url1 = "/Teacher/QueryTeacherHasChoosedStudentWhoHasNotMadeThesis";
+    var data1 = new Object();
+
+    function success1(data) {
+        var table = $("#student6");
+        for (var i = 0; i < data.length; i++) {
+            var row = $("<tr></tr>").attr("name", "haveselected");
+
+            var td1 = $("<td></td>").text(parseInt(i + 1)).attr("class", "th1");
+            var td2 = $("<td></td>").text(data[i].sname).attr("class", "th1");
+            var td3 = $("<td></td>").text(data[i].className).attr("class", "th2");
+            var td4 = $("<td></td>").text(data[i].thesisName).attr("class", "th2");
+            var td5 = $("<td></td>").text(data[i].thesiSourcs).attr("class", "th1");
+            td1.appendTo(row);
+            td2.appendTo(row);
+            td3.appendTo(row);
+            td4.appendTo(row);
+            td5.appendTo(row);
+            row.appendTo(table);
+        }
+    }
+    myPostAjax(url1, data1, success1, error);
+
     //---------------------计算论题审核未通过的总数------------------------
     //----------------------2017年3月16日 22:30:56-------------------------
     function thesisCount() {
@@ -440,11 +465,27 @@ $("#submit").click(function () {
 });
 
 //------------------------------------------------------
-//---------------2017年3月14日 22:07:30-----------------
+//---------------2017年3月19日 00:38:51-----------------
 //------------------------------------------------------
 $("#select-student-btn").click(function() {
-    var items = $("#student2").find("input:checked");
+    var items = $("#student5").find("input:checked");
+    var url = "/Teacher/ChooseStudents";
+    var tempdata =[];
+    items.each(function() {
+        var sno = $(this).attr("value");
+        var thesisid = $(this).attr("name");
+        var maps = new Object();
+        maps.sno = sno;
+        maps.thesisid = thesisid;
+        tempdata.push(maps);
+    }); 
+    var data = { data: JSON.stringify(tempdata) };
+    function success(data) {
+        alert(data.tip);
+        location.reload(true);
+    }
 
+    myPostAjax(url,data,success);
 });
 
 

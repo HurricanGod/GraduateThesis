@@ -96,11 +96,36 @@ namespace ThesisSelectSystem.DAL
             return thesisList;
         }
 
+
+        /// <summary>
+        /// 查询选了指导老师非自拟题学生的学号、姓名、课题号、课题名
+        /// </summary>
+        /// <param name="proc"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public List<ChooseTeacherThesis> QueryChooseTeacherThesisInfo(string proc, SqlParameter[] args)
         {
             CommomQuery < ChooseTeacherThesis > query= new CommomQuery<ChooseTeacherThesis>();
             return query.ProcedureQueryToList(proc, args, new ChooseTeacherThesisRowMapper());
-        } 
+        }
+
+
+        /// <summary>
+        /// 查询教师已经同意指导非自拟题学生的姓名、班级、论题名、论题来源
+        /// </summary>
+        /// <param name="proc">存储过程名</param>
+        /// <param name="args">存储过程需要的参数</param>
+        /// <returns></returns>
+        public List<TGuidingStudentInfo> QueryChoosedGuidingStudent(string proc, SqlParameter[] args)
+        {
+            CommomQuery<TGuidingStudentInfo> query=new CommomQuery<TGuidingStudentInfo>();
+            return query.ProcedureQueryToList(proc, args,new GuideStudentTableRowMapper());
+        }
+
+        public bool ExecuteChooseStudentTran(string proc, SqlParameter[] args)
+        {
+            return SqlHelper.ExecuteNonqueryProc(proc, args) > 0 ? true : false;
+        }
 
     }
 }
