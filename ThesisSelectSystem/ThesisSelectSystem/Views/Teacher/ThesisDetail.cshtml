@@ -1,0 +1,281 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>课题详情</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <style>
+       body{
+					width: auto;
+					height: auto;
+					font-size: 20px;
+					background-color: #b0e0e6
+				}
+				
+				#thesis{
+					width:80%;
+					height:100%;
+					margin:auto;
+				}
+				#thesis table{
+					width:100%;
+					height:100%;	
+				}
+				#thesis #thesis-content{
+					padding-top: 2%;
+					border-radius: 0.5em;
+				}
+				p{
+					overflow: hidden;
+					word-wrap: break-word;
+					word-break: break-all;
+					text-align: left;
+				}
+				#thesis tr{
+					border:1em #b0e0e6 solid;
+					padding-top: 2%;
+					background-color: #f9f9f9;
+				}
+				input,select,textarea{
+					display: none;
+				}
+				
+				#thesis table td:nth-child(1){
+					width:32%;
+					text-align: right;
+					
+				}
+				#thesis table td:nth-child(2){
+					text-align: center;
+				}
+				tr:last-child{
+					height: 200px;
+					overflow-y:scroll ;
+					
+				}
+				textarea{
+					height: 100%;
+					columns: lightgray;
+					overflow-y:scroll ;
+					height: auto
+				}
+				#name,#type{
+					width: 50%;
+				}
+				.but{
+					padding-left: 40%;
+				}
+				.submit{
+					display: none;
+				}
+    </style>
+</head>
+
+<body>
+    <div id="thesis">
+        <div id="thesis-content">
+            <form method="post" action="#" id="myform">
+                <table class="table">
+                    <tr>
+                        <td>论题名称：</td>
+                        <td>
+                            <span id="myname">@ViewBag.name</span>
+                            <input id="name" class="form-control" type="text" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>审核状态：</td>
+                        <td id="status">@ViewBag.status</td>
+                    </tr>
+                    <tr>
+                        <td>论题类型：</td>
+                        <td>
+                            <span id="mytype">@ViewBag.type</span>
+                            <select id="type" name="type" class="form-control">
+                                <option value="1" selected="selected">应用研究类</option>
+                                <option value="2">基础应用开发</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>论题内容：</td>
+                        <td>
+                            <textarea id="content" class="form-control" cols="5" rows="10"></textarea>
+                            <div id="mycontent">@ViewBag.content</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>指导老师意见：</td>
+                        <td>
+                            @{ int index = 1;}
+                            @foreach (var s in ViewBag.suggestion)
+                            {
+                                <p>@index .@s</p>
+                                {
+                                    index++;
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr style="display: none">
+                        <td></td>
+                        <td><input id="thesisId" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="but ">
+            <button class="btn btn-success">返回上一页</button>
+            <button id="delete" class="btn btn-danger">删除课题</button>
+            <button id="change" class="btn btn-warning">修改课题</button>
+            <button id="submit" class="btn btn-primary submit">确认修改</button>
+        </div>
+    </div>
+    <script>
+        function myPostAjax(url, data, successFunction, errorFunction) {
+            $.ajax({
+                type: "post",
+                url: url,
+                data: data,
+                dataType: "json",
+                success: successFunction,
+                error: errorFunction
+            });
+        };
+        function error(textStatus, errorThrown) {
+            alert("状态：" + textStatus + "\n异常：" + errorThrown);
+        };
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        };
+
+       
+
+        $(document).ready(function () {
+            var statusText = $("#status").text();
+            $("#thesisId").attr("value", getUrlParam("id"));
+            $("input").hide();
+            $("select").hide();
+            $("textarea").hide();
+            if (statusText != "待审核" && statusText != "未通过") {
+                $("#change").attr("disabled", true);
+                $("#delete").attr("disabled", true);
+                $("#submit").attr("disabled", true);
+                
+            }
+            if (@ViewBag.suggestionNum>0) {
+                $("#change").attr("disabled", true);
+                $("#delete").attr("disabled", true); 
+            }
+        });
+      
+        //跳转回教师页面
+        $("button").eq(0).click(function () {
+            location.href = "Teacher";
+        });
+
+        //删除课题按钮
+        $("#delete").click(function () {
+            var sure = confirm("确定要删除该论题");
+            if (sure) {
+                var id = $("#thesisId").val();
+                var data = { id: id };
+                var url = "/Teacher/DeleteThesis";
+
+                function success(data) {
+                    if (data.tip == "fault") {
+                        alert("删除操作失败");
+                    }
+                    location.href = "/Teacher/Teacher";
+                }
+
+                function error(data) {
+                    alert(data.tip);
+                }
+
+                myPostAjax(url, data, success, error);
+            }
+        });
+        //修改课题
+        $("#change").click(function () {
+            //默认值为原来的值
+            $("#change").attr("disabled", true);
+            document.getElementById("name").value = $("#myname").html();
+            document.getElementById("type").value = $("#mytype").html();
+            document.getElementById("content").value = $("#mycontent").html();
+
+            $("#submit,input,textarea,select").show();
+            $("span").empty();
+            $("#mycontent").empty(); //清空原来的值
+
+        });
+
+        //确认提交
+        $("#submit").click(function () {
+            event.preventDefault();
+            //将input的新值显示在原来的位置上
+            var mynewname = document.getElementById("name");
+            var newname = document.getElementById("myname");
+            newname.innerHTML = mynewname.value;
+
+            var mynewtype = document.getElementById("type");
+            var newtype = document.getElementById("mytype");
+            newtype.innerHTML = mynewtype.value;
+
+            var mynewcontent = document.getElementById("content");
+            var newcontent = document.getElementById("mycontent");
+            newcontent.innerHTML = mynewcontent.value;
+            //判断论题类型是否未选
+            var type = $("#type option:selected").text();
+            if (type==null||type=="") {
+                alert("请选择论题类型");
+                location.reload();
+                return;
+            }
+            //判断论题名字是否填写
+            var name = newname.innerHTML;
+            if (name==null||name=="") {
+                alert("论题名不允许为空，请填写后再提交");
+                location.reload();
+                return;
+            }
+            //判断论题内容是否为空
+            var content = newcontent.innerHTML;
+            if (content==null||content=="") {
+                alert("论题内容不允许为空，请填写后再提交"); 
+                location.reload();
+                return;
+            }
+            if (window.confirm("确认吗?")) { //确认修改就提交表单
+                $("#submit,input,textarea,select").hide();
+                var data = new Object();
+                data.id = getUrlParam("id");
+                data.name = name;
+                data.type = type;
+                data.content = content;
+                var url = "/Teacher/ModifyThesis";
+
+                function success(data) {
+                    if (data.tip == "false") {
+                        alert("修改论题失败！");
+                    }
+                    location.reload(true);
+                };
+
+                myPostAjax(url, data, success, error);
+
+            } else { //取消修改不作任何变化
+            }
+        });
+
+    </script>  
+</body>
+
+</html>

@@ -100,11 +100,11 @@ namespace ThesisSelectSystem.Controllers
                     string identity = teacher.specialIdentity.IsEmpty() ? "教师" : teacher.specialIdentity;
                     Session["Identity"] = identity;
                 }
-                return Json(new {tip= "成功登录" ,role=realRole});
+                return Json(new {tip= "成功登录" ,role=realRole, errorcode = "0" });
             }
             else
             {
-                return Json(new {tip= "密码错误" });
+                return Json(new {tip= "帐号不存在或密码错误",errorcode="1" });
             }
             
         }

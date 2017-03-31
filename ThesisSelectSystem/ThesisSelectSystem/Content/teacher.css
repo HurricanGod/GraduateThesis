@@ -6,9 +6,21 @@ body{
 	height: 716px;
 	background-color: #FFFFFF;
 	margin: 0;
-	
+	overflow: hidden;
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow-y: scroll;
 }
+
 * a{
+	text-decoration: none;
+}
+ a{
+	color: #66512C;
+	text-decoration: none;
+}
+a:hover{
+	color: #A94442;
 	text-decoration: none;
 }
 * li{
@@ -175,13 +187,19 @@ header{
 	height: 100%;
 	
 }
+.selectstudent tr:hover{
+	background-color: #F2DEDE;
+}
+.thesistitle tr:hover{
+	background-color: #F9F2F4;
+}
 #liebiao1,#liebiao2{
 	display: none;
 }
 .zini,.zini1,.wode,.wode1{
 	width: 100%;
 	height: 100%;
-	padding: 5% 5% 5% 15%;
+	padding: 5% 5% 5% 20%;
 	
 	/*background-color: #EBCCCC;*/
 }
@@ -218,8 +236,8 @@ header{
 }
 
 .student3 table{
-	/*background-color: #DDFFDD;*/
-	border-radius: 3%;
+	background-color: #DDFFDD;
+	border-radius: 5%;
 
 }
 .manage{
@@ -286,10 +304,9 @@ header{
 	
 }
 .topic1{
-	width: 50%;
+	width: 80%;
 	height: 100%;
-	padding: 6% 4% 1.5%;
-	float: left;
+	padding: 6% 0 1.5% 20%;
 	font-size: 1.5rem;
 }
 .topic1 table{
@@ -298,17 +315,26 @@ header{
 
 }
 .topic2{
-	width: 50%;
+	width: 80%;
 	height: 100%;
-	float: right;
-	padding: 6% 4% 1.5%;
+	padding: 6% 0 1.5% 20%;
 	font-size: 1.5rem;
 }
 .topic2 table{
 	background-color: #C1E2B3;
 	border-radius: 3%;
 }
-
+.topic2 a{
+	color: #66512C;
+	text-decoration: none;
+}
+.topic2 a:hover{
+	color: #A94442;
+	text-decoration: none;
+}
+.topic1 tr:hover,.topic2 tr:hover{
+	background-color: #F1F1F1
+}
 .tcdPageCode,.tcdPageCode1,.tcdPageCode2,.tcdPageCode3,.tcdPageCode4,.tcdPageCode5{
 	padding: 15px 20px;
 	text-align: left;
@@ -387,11 +413,17 @@ header{
 	border-bottom: 0.5px solid #C0C0C0;
 	padding-top: 7%;
 }
+.delete1 tr:hover{
+	background-color: #CCCCCC;
+}
 .btn-gr1{
 	padding-top: 5%;
 	padding-left: 20%;
 }
-
+.btn-gr2{
+	padding-top: 5%;
+	padding-left: 35%;
+}
 .deletestudent{
 	width: 100%;
 	height: 100%;
@@ -526,7 +558,8 @@ header{
 	float: right;
 }
 
+
 /*这里我先做的是常规的网站,然后不断向下兼容
 @media screen and (max-width: 960px) { ... } /*兼容平板*/
-/*@media screen and (max-width: 640px) { ... } /*兼容手机*/
+/*@media screen and (max-width: 640px) { ... }*/ /*兼容手机*/
 /*@media screen and (max-width: 480px) { ... }*/

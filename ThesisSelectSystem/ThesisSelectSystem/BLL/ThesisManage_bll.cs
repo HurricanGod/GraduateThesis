@@ -69,10 +69,34 @@ namespace ThesisSelectSystem.BLL
         {
             SqlParameter yearParameter=new SqlParameter("@year",year);
             SqlParameter guiderIdParameter=new SqlParameter("@guiderId",guiderId);
-            return new ThesisDal().QueryChoosedGuidingStudent("HasChoosedStudentList", new SqlParameter[] {yearParameter, guiderIdParameter});
+            return new ThesisDal().QueryChoosedGuidingStudent("HasChoosedStudentList", 
+                new SqlParameter[] {yearParameter, guiderIdParameter});
 
         }
 
+        /// <summary>
+        /// 查询教师已经同意指导自拟题学生的姓名、班级、论题名、论题来源
+        /// </summary>
+        /// <param name="year">论题的使用年份</param>
+        /// <param name="guiderId">教师ID</param>
+        /// <returns></returns>
+        public List<TGuidingStudentInfo> QueryStudentWhoMakeThesisBeChoosedByTeacher(int year, string guiderId)
+        {
+            SqlParameter yearParameter = new SqlParameter("@year", year);
+            SqlParameter guiderIdParameter = new SqlParameter("@guiderId", guiderId);
+            SqlParameter sourcesParameter=new SqlParameter("@sources","学生拟题");
+            SqlParameter isMakeThesisParameter=new SqlParameter("@is_make_thesis","是");
+            return new ThesisDal().QueryChoosedGuidingStudent("StudentList", new SqlParameter[]
+            {yearParameter, guiderIdParameter, sourcesParameter, isMakeThesisParameter});
+        }
+
+        /// <summary>
+        /// 教师同意学生选定自己做导师
+        /// </summary>
+        /// <param name="proc"></param>
+        /// <param name="teacherid"></param>
+        /// <param name="other">other为SnoAndThesis的集合，集合中每一个元素存放学号和课题号</param>
+        /// <returns></returns>
         public bool ExecuteTeacherChooseStudentTran(string proc, string teacherid, List<SnoAndThesis> other)
         {
             int count = 0;
@@ -89,5 +113,35 @@ namespace ThesisSelectSystem.BLL
             }
             return count == other.Count ? true : false;
         }
+
+
+        /// <summary>
+        /// 根据年份和教师ID查询教师所选择指导的学生的学号、姓名、选的毕业论题号、论题名称
+        /// </summary>
+        /// <param name="guiderid"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public List<ChoosedThesisStuNameList> QueryTeacherChooseAllOfStudent(string guiderid,int year)
+        {
+            SqlParameter yearParameter = new SqlParameter("@year", year);
+            SqlParameter guideridParameter=new SqlParameter("@guiderId",guiderid);
+            return new ThesisDal().QueryTeacherChooseAllOfStudent("QueryTeacherChooseAllOfStudent",
+                new SqlParameter[] {yearParameter, guideridParameter});
+
+        }
+
+        public bool ExecuteTeacherWithDrawStudentTran(string sno, long thesisid,string opinion)
+        {
+            SqlParameter snoParameter =new SqlParameter("@student_no", sno);
+            SqlParameter thesisidParameter=new SqlParameter("@thesis_no",thesisid);
+            SqlParameter opinionParameter=new SqlParameter("@guider_suggestion",opinion);
+            return SqlHelper.ExecuteNonqueryProc
+                ("TeacherWithdrawStudent", new SqlParameter[] {snoParameter, thesisidParameter, opinionParameter})
+                   > 0
+                ? true
+                : false;
+        }
+
+
     }
 }

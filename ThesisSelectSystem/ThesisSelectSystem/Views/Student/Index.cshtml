@@ -2,17 +2,289 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>学生主页Index</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生选题</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/SystemAdministrator/bootstrap-select.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content//bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/student.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/SystemAdministrator/wangEditor.css"/>
+    <link rel="stylesheet" href="~/Content/bootstrap-table.css" type="text/css"/>
 </head>
+
 <body>
-    <div> 
-        <p>学生主页</p>
+    <header>
+        <div class="admin">
+            <a href="#">
+                <span class="glyphicon glyphicon-leaf"></span>
+                <span class="adminstrastor">梁婉玲</span>
+            </a>
+        </div>
+        <div class="setting">
+            <a href="#">
+                <span class="glyphicon glyphicon-tasks"></span>
+            </a>
+        </div>
+        <div class="warns">
+            <a href="#">
+                <span class="glyphicon glyphicon-bell"></span>
+            </a>
+        </div>
+    </header>
+    <div class="content ">
+        <aside class="vertical ">
+            <ul>
+                <li class="select-topic">
+                    <a id="system" class="system" href="#">
+                        <span class="glyphicon glyphicon-th-list"></span> 选择课题
+                    </a>
+                </li>
+                <li class="apply-topic">
+                    <a id="apartment" href="#">
+                        <span class="glyphicon glyphicon-pencil"></span> 申请拟题
+                    </a>
+                </li>
+                <li class="Protocol-self">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        自拟课题
+                    </a>
+                </li>
+                <li class="Thesis">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        已选论题
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div class="contain">
+            <div class="daohang">
+                <div class="search col-xs-2">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="search" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="anm-main">
+                <div id="selects">
+                    <!--选择课题-->
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>类型</th>
+                                <th>课题名称</th>
+                                <th>出题老师</th>
+                                <th>已选人数</th>
+                                <th>可选人数</th>
+                                <th>查看该论题</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>应用型</td>
+                                <td>某某某项目某某某项目某某某项目某某某项目某某某项目某某某项目某某某项目</td>
+                                <td>汪华斌</td>
+                                <td>34</td>
+                                <td>12</td>
+                                <td>
+                                    <button class=" btn btn-info" onclick="openwin()">查看</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>001</td>
+                                <td>应用型</td>
+                                <td>某某某项目某某某项目某某某项目某某项目某某某项目</td>
+                                <td>汪华斌</td>
+                                <td>34</td>
+                                <td>12</td>
+                                <td>
+                                    <button class=" btn btn-info" onclick="openwin()">查看</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>001</td>
+                                <td>应用型</td>
+                                <td>某某某项目某某某项目某某某项目某某某项目某某某项目某某某项目某某某项目</td>
+                                <td>汪华斌</td>
+                                <td>34</td>
+                                <td>12</td>
+                                <td>
+                                    <button class=" btn btn-info" onclick="openwin()">查看</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="padge">
+                        <ul class="pagination">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="applys">
+                    <!--申请拟题-->
+                    <div id="applys-set">
+                        <form action="#" method="post" role="form">
+                            <input type="text" placeholder="请输入学号" class="form-control" />
+                            <br />
+                            <select class="form-control">
+                                <option value="申请自拟题">申请自拟题</option>
+                                <option value="不申请自拟题">不申请自拟题</option>
+                            </select>
+                            <br />
+                            <input type="submit" value="提交" class="form-control btn-success" />
+                        </form>
+                    </div>
+                </div>
+                <div id="protocol-self">
+                    <!--自拟课题-->
+                    <div id="protocol-content">
+                        <form action="#" method="post" role="form">
+                            <table>
+                                <tr>
+                                    <td id="Number">
+                                        <label for="number">序号：</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="number" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="name">论题名称：</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="name" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="type">论题类型：</label>
+                                    </td>
+                                    <td>
+                                        <select id="type" class="form-control">
+                                            <option value="应用型">应用型</option>
+                                            <option value="研究型">研究型</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="sourse">论题来源：</label>
+                                    </td>
+                                    <td>
+                                        <select id="sourse" class="form-control">
+                                            <option value="自拟">自拟</option>
+                                            <option value="教师拟">教师拟</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="times">毕业年份：</label>
+                                    </td>
+                                    <td>
+                                        <select id="times" class="form-control">
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="teacher">指导老师：</label>
+                                    </td>
+                                    <td>
+                                        <select id="teacher" class="form-control">
+                                            <option value="曽树洪">曽树洪</option>
+                                            <option value="曽树洪">曽树洪</option>
+                                            <option value="曽树洪">曽树洪</option>
+                                            <option value="曽树洪">曽树洪</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="content">论题内容：</label>
+                                    </td>
+                                    <td>
+                                        <textarea rows="5" id="content" class="form-control"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="btn btn-success">修改</button>
+                                        <button type="submit" class="btn btn-success">提交</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div id="thesis">
+                    <!--已选论题-->
+                    <div id="thesis-content">
+                        <table class="table">
+                            <tr>
+                                <td><b>论题名称：</b></td>
+                                <td>移动应用开发</td>
+                            </tr>
+                            <tr>
+                                <td><b>审核状态：</b></td>
+                                <td>已通过审核</td>
+                            </tr>
+                            <tr>
+                                <td><b>论题名称：</b></td>
+                                <td>移动应用开发</td>
+                            </tr>
+                            <tr>
+                                <td><b>指导老师意见：</b></td>
+                                <td>无意见</td>
+                            </tr>
+                            <tr>
+                                <td><b>负责模块：</b></td>
+                                <td>文档编写和结构设计</td>
+                            </tr>
+                            <tr>
+                                <td><b>论题内容：</b></td>
+                                <td>如何在应用环境中设计、建立和集成SMS短消息应用；如何创建能够充分利用SIM卡功能的代码；如何在3G电话中使用微浏览器和微Web服务器</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="limits">
+                    <p class="limits">Copyright© 2016-2017 BY 88888 .All Rights Reserved</p>
+                </div>
+                <div class="time">
+                </div>
+            </footer>
+        </div>
     </div>
+    <script src="~/Scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/SystemAdministrator/bootstrap-select.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/student.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/bootstrap-table.js" type="text/javascript" charset="utf-8"></script>
 </body>
+
 </html>

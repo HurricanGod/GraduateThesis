@@ -25,8 +25,7 @@ namespace Model
 
         public Thesis()
         {
-            usingYear = DateTime.Now.Year;
-            topicStatus = "待审核";
+            
         }
     }
 }

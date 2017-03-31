@@ -728,5 +728,100 @@ namespace ThesisSelectSystem.DAL
             return itemEntity;
         }
 
+
+
+        /// <summary>
+        /// 根据长整型主键查询数据，返回一个指定类型的实体对象
+        /// </summary>
+        /// <param name="returnType">全类名，用于指定查询结果要封装到的类里</param>
+        /// <param name="id">要查询表的主键值</param>
+        /// <param name="tableName">要查询的表名</param>
+        /// <returns>参数returnType指定类型的对象</returns>
+        public static Object QueryById(Type returnType, long id, string tableName)
+        {
+            Object itemEntity = null;
+            try
+            {
+                itemEntity = returnType.GetConstructor(Type.EmptyTypes).Invoke(null);
+                FieldInfo[] fields = returnType.GetFields();
+                PropertyInfo[] properties = returnType.GetProperties();
+                if (itemEntity != null)
+                {
+                    #region 生成SQL语句
+                    var tableElement = GetTableElement(tableName);
+                    string primaryKeyField = tableElement.GetAttribute("primary-key");
+                    StringBuilder builder = new StringBuilder();
+                    builder.Append("select * from ").Append(tableName)
+                        .Append(" where  ").Append(primaryKeyField).Append("=@primaryKey");
+                    string sqlText = builder.ToString();
+                    #endregion
+                    #region 数据库操作
+                    using (SqlConnection coon = new SqlConnection(SqlHelper.sqlConnectionString))
+                    {
+                        try
+                        {
+                            coon.Open();
+                            using (SqlCommand cmd = new SqlCommand(sqlText, coon))
+                            {
+                                #region 查询数据
+                                SqlParameter idParameter = new SqlParameter("@primaryKey", id);
+                                DataTable dataTable = new DataTable();
+                                Object[] cells = new object[properties.Length];
+                                cmd.Parameters.AddRange(new SqlParameter[] { idParameter });
+                                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                                {
+                                    adapter.Fill(dataTable);
+                                }
+
+                                #endregion
+                                #region 查询出的集合不为空将数据封装到对象，为空则直接返回null
+                                if (dataTable.Rows.Count > 0)
+                                {
+                                    #region 将查询出的数据封装到对象中
+                                    foreach (DataRow row in dataTable.Rows)
+                                    {
+                                        int index = 0;
+                                        foreach (DataColumn column in dataTable.Columns)
+                                        {
+                                            cells[index++] = row[column];
+                                        }
+                                        break;
+                                    }
+                                    for (int i = 0; i < properties.Length; i++)
+                                    {
+                                        if (!(cells[i] is DBNull))
+                                        {
+                                            if (!Convert.ToString(cells[i]).Equals(""))
+                                            {
+                                                properties[i].SetValue(itemEntity, Convert.ChangeType(cells[i], properties[i].PropertyType));
+                                            }
+
+                                        }
+                                    }
+                                    #endregion
+                                }
+                                else
+                                {
+                                    return null;
+                                }
+                                #endregion
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+
+                    }
+                    #endregion
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return itemEntity;
+        }
     }
 }

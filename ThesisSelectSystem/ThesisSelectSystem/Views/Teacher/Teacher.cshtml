@@ -40,49 +40,73 @@
             <ul>
                 <li>
                     <button class="btn btn1">
-                        <span class="glyphicon glyphicon-certificate"></span>
-                        选择学生
+                        <span class="glyphicon glyphicon-certificate"></span>选择学生
                         <img id="more" src="~/img/more.png" />
                     </button>
                     <ul id="student1">
                         <li>
                             <button class="btn btn3">自拟课题<img id="more" src="~/img/more.png" /></button>
                             <ul id="liebiao1">
-                                <li><button class="btn btn4" id="un-selected-student1"><span class="glyphicon glyphicon-plus"></span>未选择的学生</button></li>
-                                <li><button class="btn btn4"><span class="glyphicon glyphicon-plus"></span>已选择学生列表</button></li>
+                                <li>
+                                    <button class="btn btn4" id="un-selected-student1">
+                                        <span class="glyphicon glyphicon-plus"></span>未选择的学生
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn btn4">
+                                        <span class="glyphicon glyphicon-plus"></span>已选择学生列表
+                                    </button>
+                                </li>
                             </ul>
                         </li>
                         <li>
                             <button class="btn btn3">教师拟题<img id="more" src="~/img/more.png" /></button>
                             <ul id="liebiao2">
-                                <li><button class="btn btn4" id="un-selected-student2"><span class="glyphicon glyphicon-plus"></span>未选择的学生</button></li>
-                                <li><button class="btn btn4"><span class="glyphicon glyphicon-plus"></span>已选择学生列表</button></li>
+                                <li>
+                                    <button class="btn btn4" id="un-selected-student2">
+                                        <span class="glyphicon glyphicon-plus"></span>未选择的学生
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn btn4">
+                                        <span class="glyphicon glyphicon-plus"></span>已选择学生列表
+                                    </button>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <button class="btn btn1">
-                        <span class="glyphicon glyphicon-briefcase"></span>
-                        课题管理
+                        <span class="glyphicon glyphicon-briefcase"></span>课题管理
                         <img id="more" src="~/img/more.png" />
                     </button>
                     <ul id="topic1">
-                        <li><button class="btn btn3"><span class="glyphicon glyphicon-th-list"></span>通过审核的课题</button></li>
-                        <li><button class="btn btn3"><span class="glyphicon glyphicon-minus"></span>删除学生</button></li>
-                        <li><button class="btn btn3"><span class="glyphicon glyphicon-trash"></span>教师课题</button></li>
+                        <li>
+                            <button class="btn btn3" id="inspect-thesis-btn">
+                                <span class="glyphicon glyphicon-th-list"></span>审核通过的论题
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn3">
+                                <span class="glyphicon glyphicon-th-list"></span>教师课题
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn3">
+                                <span class="glyphicon glyphicon-minus"></span>删除学生
+                            </button>
+                        </li>
                     </ul>
                 </li>
                 <li>
                     <button class="btn btn2">
-                        <span class="glyphicon glyphicon-tree-deciduous"></span>
-                        拟定选题
+                        <span class="glyphicon glyphicon-tree-deciduous"></span>拟定选题
                     </button>
                 </li>
                 <li>
                     <button class="btn btn2">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                        进行审题
+                        <span class="glyphicon glyphicon-eye-open"></span>进行审题
                     </button>
                 </li>
             </ul>
@@ -91,7 +115,6 @@
         </div>
 
         <div class="contents">
-
             <div class="search">
                 <div class="searchbody col-xs-2">
                     <div class="input-group">
@@ -105,208 +128,211 @@
 
             <div class="contain">
 
-					<div class="selectstudent">
-						<div class="zini">
-							<div class="student2">
-								<form action="#" method="post">
-									<table id="student2" cellspacing="20">
-										<caption>未选择学生列表</caption>
-									    <tr>
-									        <th class="th1">序号</th>
-									        <th class="th1">学生姓名</th>
-									        <th class="th2">课题名称</th>
-									        <th class="th1">选择该学生</th>
-									    </tr>
+            <div class="selectstudent">
+                <div class="zini">
+                    <div class="student2">
+                        <form action="#" method="post">
+                            <table id="student2" cellspacing="20">
+                                <caption>未选择学生列表</caption>
+                               
+                                <tr>
+                                    <th class="th1">序号</th>
+                                    <th class="th1">学生姓名</th>
+                                    <th class="th2">课题名称</th>
+                                    <th class="th1">论题状态</th>
+                                    <th class="th1">选择该学生</th>
+                                </tr>
+                                @for(int i=0;i< ViewBag.snoArray.Length;i++)
+                                {
+                                    <tr>
+                                        <td class="th1">@(i + 1)</td>
+                                        <td class="th1" >@ViewBag.nameArray[i]</td>
+                                        <td class="th2" >@ViewBag.thesisNameArray[i]</td>
+                                        <td class="th1">@ViewBag.thesisStatusArray[i]</td>
+                                        <td class="th1"><input type="checkbox" value="@ViewBag.snoArray[i]" name="@ViewBag.thesisIdArray[i]" /></td>
+                                    </tr>
+                                }
+                               
 
-									    <tr>
-									        <td class="th1">001</td>
-									        <td class="th1">梁婉玲</td>
-									        <td class="th2">基于H5的小游戏设置平台</td>
-									        <td class="th1"><input type="checkbox" value=""/></td>
-									    </tr>
+                               
+                            </table>
+                        </form>
+                        <div class="button">
+                            <button class="btn btn-success" id="select-stu-thesis-btn">确认提交</button>
+                        </div>
 
-										<tr><td class="th1">002</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">003</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">004</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">005</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">006</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">007</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">008</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">009</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-										<tr><td class="th1">010</td><td class="th1">梁婉玲</td><td class="th2">基于H5的小游戏设置平台</td><td class="th1"><input type="checkbox" /></td></tr>
-								</table>
-								</form>
-							    <div class="button"><button class="btn btn-success">确认提交</button>
-							    </div>
-							   
-							    <div>  
-							        <div class="tcdPageCode1"></div>
-							    </div>
-							</div>
-							
-						</div>
-						<div class="zini1">
-							<div class="student3">
-								<form action="#" method="post">
-								    <table id="student4">
-									    <caption>已选择的学生列表</caption>
-									    <tr><th class="th1">序号</th><th class="th1">学生姓名</th><th class="th2">班级</th><th class="th2">课题名称</th><th class="th1">课题性质</th></tr>
-									    <tr><td class="th1">001</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">002</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">003</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">004</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">005</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">006</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">007</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">008</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">009</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-									    <tr><td class="th1">010</td><td class="th1">梁婉玲</td><td class="th2">14计科2班</td><td class="th2">基于H5的小游戏平台</td><td class="th1">自拟</td></tr>
-								    </table>	
-							    </form>
-							    <div>
-								    <div class="tcdPageCode2"></div>
-							    </div>
-							</div>
-						</div>
-						
-						<div class="wode">
-							<div class="student2">
-								<form action="#" method="post">
-									<table id="student5" cellspacing="20">
-										<caption>未选择学生列表</caption>
-										<tr><th class="th1">序号</th><th class="th1">学生姓名</th><th class="th2">课题名称</th><th class="th1">选择该学生</th></tr>
-									    @*<tr>
-									        <td class="th1">001</td>
-									        <td class="th1">陈志桓</td>
-									        <td class="th2">毕业选题系统</td>
-									        <td class="th1">
-									            <input type="checkbox"/>
-									        </td>
-									    </tr>*@
+                        <div>
+                            <div class="tcdPageCode1"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="zini1">
+                    <div class="student3">
+                        <form action="#" method="post">
+                            <table id="student4">
+                                <caption>已选择的学生列表</caption>
+                                <tr>
+                                    <th class="th1">序号</th>
+                                    <th class="th1">学生姓名</th>
+                                    <th class="th2">班级</th>
+                                    <th class="th2">课题名称</th>
+                                    <th class="th1">课题性质</th>
+                                </tr>
+                            </table>
+                        </form>
+                        <div>
+                            <div class="tcdPageCode2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wode">
+                    <div class="student2">
+                        <form action="#" method="post">
+                            <table id="student5" cellspacing="20">
+                                <caption>未选择学生列表</caption>
+                                <tr>
+                                    <th class="th1">序号</th>
+                                    <th class="th1">学生姓名</th>
+                                    <th class="th2">课题名称</th>
+                                    <th class="th1">选择该学生</th>
+                                </tr>
+                                @*<tr>
+                                            <td class="th1">001</td>
+                                            <td class="th1">陈志桓</td>
+                                            <td class="th2">毕业选题系统</td>
+                                            <td class="th1">
+                                                <input type="checkbox"/>
+                                            </td>
+                                        </tr>*@
 
 
-									</table>
-								</form>
-							    <div class="button"><button class="btn btn-success" id="select-student-btn">确认提交</button>
-							    </div>
-							    <div>
-                                    <div class="tcdPageCode3"></div>
-							    </div>
-							</div>
-							
-							
-							
-						</div>
-						
-						<div class="wode1">
-							<div class="student3">
-								<form action="#" method="post">
-								<table id="student6">
-									<caption>已选择的学生列表</caption>
-								    <tr>
-								        <th class="th1">序号</th>
-								        <th class="th1">学生姓名</th>
-								        <th class="th2">班级</th>
-								        <th class="th2">课题名称</th>
-                                        <th class="th1">课题性质</th>
-								    </tr>
-								    @*<tr>
-								        <td class="th1">001</td>
-								        <td class="th1">梁婉玲</td>
-								        <td class="th2">14计科2班</td>
-								        <td class="th2">基于H5的小游戏平台</td>
-                                        <td class="th1">我拟</td>
-								    </tr>*@
-									
-								</table>
-								
-							</form>
-							<div>
-                                <div class="tcdPageCode4"></div>
-							</div>
-							</div>
-							</div>
-					</div>
+                            </table>
+                        </form>
+                        <div class="button">
+                            <button class="btn btn-success" id="select-student-btn">确认提交</button>
+                        </div>
+                        <div>
+                            <div class="tcdPageCode3"></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="wode1">
+                    <div class="student3">
+                        <form action="#" method="post">
+                            <table id="student6">
+                                <caption>已选择的学生列表</caption>
+                                <tr>
+                                    <th class="th1">序号</th>
+                                    <th class="th1">学生姓名</th>
+                                    <th class="th2">班级</th>
+                                    <th class="th2">课题名称</th>
+                                    <th class="th1">课题性质</th>
+                                </tr>
+                                @*<tr>
+                                            <td class="th1">001</td>
+                                            <td class="th1">梁婉玲</td>
+                                            <td class="th2">14计科2班</td>
+                                            <td class="th2">基于H5的小游戏平台</td>
+                                            <td class="th1">我拟</td>
+                                        </tr>*@
+
+                            </table>
+
+                        </form>
+                        <div>
+                            <div class="tcdPageCode4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                 <div class="manage">
-                    
                     <div class="allofthetopic">
                         <div class="topic1">
                             <form action="#" method="post">
-                                <table>
-                                    <caption>通过审核的课题列表</caption>
-                                    <tr><th class="th3">拟题人</th><th class="th3">课题名称</th><th class="th4">课题来源</th><th class="th5">课题类型</th><th class="th4">适用年份</th></tr>
-                                    <tr><td class="th3">001</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">002</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">003</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">004</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">005</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">005</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">006</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">007</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">008</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
-                                    <tr><td class="th3">009</td><td class="th3">梁婉玲</td><td class="th4">14计科2班</td><td class="th5">基于H5的小游戏开发平台</td><td class="th4">自拟</td></tr>
+                                <table id="pass-examinethesis">
+                                    <caption>通过审核的论题列表</caption>
+                                    <tr>
+                                        <th class="th3">拟题人</th>
+                                        <th class="th3">论题来源</th>
+                                        <th class="th4">论题状态</th>
+                                        <th class="th5">论题名称</th>
+                                        <th class="th4">使用年份</th>
+                                    </tr>
                                 </table>
                             </form>
-                            <div>
+                            <div id="passexaminethesis">
                                 <div class="tcdPageCode"></div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="allofthetopic1">
                         <div class="topic2">
                             <form action="#" method="post">
-                                <table>
-                                    <caption>我拟定的课题列表</caption>
-                                    <tr><th class="th3">序号</th><th class="th5">课题名称</th><th class="th4">课题归类</th></tr>
-                                    <tr><td class="th3">001</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">002</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">003</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">004</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">005</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">006</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">007</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
-                                    <tr><td class="th3">008</td><td class="th5">移动互联网下的信息安全问题</td><td class="th4">移动应用</td></tr>
+                                <table id="all-thesis-of-teacher">
+                                    <caption>我拟定的课题列表(点击课题可以查看详情)</caption>
+                                    <tr id="th" name="6">
+                                        @*name属性用于记录可见行中最后一行的行号从0开始计算  *@
+                                        <th class="th3">序号</th>
+                                        <th class="th5">课题名称</th>
+                                        <th class="th4">课题归类</th>
+                                        <th class="th3">审核情况</th>
+                                    </tr>
+                                    @*<tr>
+                                        <td class="th3">001</td>
+                                        <td class="th5"><a href="detail/topic.html">移动互联网下的信息安全问题</a></td>
+                                        <td class="th4">移动应用</td>
+                                        <td class="th3">审核中</td>
+                                    </tr>*@
 
                                 </table>
                             </form>
-                            <div class="btn-gr1">
-                                <button class="btn btn-success">下一页</button>
-                                <button class="btn btn-danger">上一页</button>
-                                <button class="btn btn-success">首页</button>
-                                <button class="btn btn-danger">尾页</button>
-
+                            <div class="btn-gr2">
+                                <button class="btn btn-success" id="home-teacher-thesis">首页</button>
+                                <button class="btn btn-danger" id="prev-teacher-thesis">上一页</button>
+                                <button class="btn btn-success" id="next-teacher-thesis">下一页</button>
+                                <button class="btn btn-danger" id="end-teacher-thesis">尾页</button>
                             </div>
                         </div>
                     </div>
                     <div class="deletestudent">
                         <div class="delete1">
                             <form action="#" method="post">
-                                <table>
-                                    <tr><th>序号</th><th>姓名</th><th>课题名称</th><th class="th6">删除</th></tr>
-                                    <tr><td>01</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-info">删除</button></td></tr>
-                                    <tr><td>02</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-success">删除</button></td></tr>
-                                    <tr><td>03</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-info">删除</button></td></tr>
-                                    <tr><td>04</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-success">删除</button></td></tr>
-                                    <tr><td>05</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-info">删除</button></td></tr>
-                                    <tr><td>06</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-success">删除</button></td></tr>
-                                    <tr><td>07</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-info">删除</button></td></tr>
-                                    <tr><td>08</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-success">删除</button></td></tr>
-                                    <tr><td>09</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-info">删除</button></td></tr>
-                                    <tr><td>10</td><td>梁婉玲</td><td>公共场合机器扫地人的研究</td><td class="th6"><button class="btn btn-success">删除</button></td></tr>
-
+                                <table id="delete-student-tb">
+                                    <tr id="tr" name="6">
+                                        <th>序号</th>
+                                        <th>姓名</th>
+                                        <th>课题名称</th>
+                                        <th class="th6">退选</th>
+                                    </tr>
+                                    
                                 </table>
                             </form>
                             <div class="btn-gr1">
-                                <button class="btn btn-default">下一页</button>
-                                <button class="btn btn-success">上一页</button>
-                                <button class="btn btn-default">首页</button>
-                                <button class="btn btn-success">尾页</button>
+                                <button class="btn btn-default" id="home-delete-student-btn">首页</button>
+                                <button class="btn btn-success" id="prev-delete-student-btn">上一页</button>
+                                <button class="btn btn-default" id="next-delete-student-btn">下一页</button>
+                                <button class="btn btn-success" id="tail-delete-student-btn">尾页</button>
                             </div>
                         </div>
                     </div>
-                    <div class="deletetopic">
+                    @*<div class="deletetopic">
                         <div class="delete1">
                             <form action="#" method="post">
                                 <table id="teacher-thesis">
-                                    <tr><th>序号</th><th>课题名称</th><th>课题类型</th><th class="th6">删除</th></tr>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>课题名称</th>
+                                        <th>课题类型</th>
+                                        <th class="th6">删除</th>
+                                    </tr>
                                     @{ string thesis = "ThesisRow";}
                                     @for (int i = 0; i < (int)(ViewBag.teacherThesisNo.Length); i++)
                                     {
@@ -318,7 +344,7 @@
                                                 <button class="btn btn-primary" name="delete-thesis">删除</button>
                                             </td>
                                         </tr>
-                                    } 
+                                    }
                                 </table>
                             </form>
                             <div class="btn-gr1">
@@ -331,110 +357,110 @@
 
                             </div>
                         </div>
+                    </div>*@
+                </div>
+                <div class="protocol">
+                    <div class="pro">
+                        <div class="protocol1">
+                            <form action="#" method="post">
+                                <div class="name">
+                                    <span>课题名称</span><input class="form-control" id="thesis-name" />
+                                </div>
+                                <div class="propeties">
+                                    <span>课题类型</span>
+                                    <select class="form-control" id="type-select">
+                                        <option>应用研究类</option>
+                                        <option>基础研究类</option>
+                                    </select>
+                                </div>
+                                <div class="year">
+                                    <span>年份</span>
+                                    <select name="year" class="form-control" id="used-year">
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                    </select>
+                                </div>
+                                <div class="number">
+                                    <span>可选人数</span>
+                                    <select name="number" class="form-control" id="used-number">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                                <div class="descrition">
+                                    <span>说明</span>
+                                    <textarea class="form-control" id="thesis-detail" cols="10" rows="6"></textarea>
+                                </div>
+
+                            </form>
+                            <div class="probtn">
+                                <button class="btn btn-success" id="submit">确认提交</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            <div class="protocol">
-                <div class="pro">
-                    <div class="protocol1">
-                        <form action="#" method="post">
-                            <div class="name">
-                                <span>课题名称</span><input class="form-control" id="thesis-name"/>
-                            </div>
-                            <div class="propeties">
-                                <span>课题类型</span>
-                                <select class="form-control" id="type-select">
-                                    <option>应用研究类</option>
-                                    <option>基础研究类</option>
-                                </select>
-                            </div>
-                            <div class="year">
-                                <span>年份</span>
-                                <select name="year" class="form-control" id="used-year">
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
-                                </select>
-                            </div>
-                            <div class="number">
-                                <span>可选人数</span>
-                                <select name="number" class="form-control" id="used-number">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                            <div class="descrition">
-                                <span>说明</span><textarea class="form-control" id="thesis-detail"></textarea>
-                            </div>
+                <div class="thesistitle">
+                    <div class="title">
+                        <div class="title1">
+                            <form action="#" method="post">
+                                <table id="un-examine-thesis">
+                                    <caption>未审列表</caption>
+                                    <tr>
+                                        <th class="th6">课题号</th>
+                                        <th class="th5">出题人</th>
+                                        <th class="th7">课题名称</th>
+                                        <th class="th5">课题来源</th>
+                                        <th class="th8">课题类型</th>
+                                        <th class="th8">可选人数</th>
+                                        <th class="th6">进行审题</th>
+                                    </tr>
+                                    @for (int i = 0; i < (int)(ViewBag.unExamineThesisId.Length); i++)
+                                    {
+                                        <tr>
+                                            <td class="th6">@ViewBag.unExamineThesisId[i]</td>
+                                            <td class="th5">@ViewBag.unExamineThesisMaker[i]</td>
+                                            <td>@ViewBag.unExamineThesisTitle[i]</td>
+                                            <td class="th5">@ViewBag.unExamineThesisSource[i]</td>
+                                            <td class="th8">@ViewBag.unExamineThesisType[i]</td>
+                                            <td class="th8">@ViewBag.unExamineThesisMaxCount[i]</td>
+                                            <td>
+                                                <button class="btn btn-success ">
+                                                    <a href="/Teacher/ShowThesisDetail?thesisId=@ViewBag.unExamineThesisId[i]">审题</a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
 
-                        </form>
-                        <div class="probtn">
-                            <button class="btn btn-success" id="submit">确认提交</button>
+                                </table>
+
+                            </form>
+                        </div>
+                        <div>
+                            <div class="tcdPageCode5"></div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-            <div class="thesistitle">
-                <div class="title">
-                    <div class="title1">
-                        <form action="#" method="post">
-                            <table id="un-examine-thesis">
-                                <caption>未审列表</caption>
-                                <tr>
-                                    <th class="th6">课题号</th>
-                                    <th class="th5">出题人</th>
-                                    <th class="th7">课题名称</th>
-                                    <th class="th5">课题来源</th>
-                                    <th class="th8">课题类型</th>
-                                    <th class="th8">可选人数</th>
-                                    <th class="th6">进行审题</th>
-                                </tr>
-                                @for (int i = 0; i < (int) (ViewBag.unExamineThesisId.Length); i++)
-                                {
-                                    <tr>
-                                        <td class="th6">@ViewBag.unExamineThesisId[i]</td>
-                                        <td class="th5">@ViewBag.unExamineThesisMaker[i]</td>
-                                        <td>@ViewBag.unExamineThesisTitle[i]</td>
-                                        <td class="th5">@ViewBag.unExamineThesisSource[i]</td>
-                                        <td class="th8">@ViewBag.unExamineThesisType[i]</td>
-                                        <td class="th8">@ViewBag.unExamineThesisMaxCount[i]</td>
-                                        <td>
-                                            <button class="btn btn-success ">
-                                                <a href="/Teacher/ShowThesisDetail?thesisId=@ViewBag.unExamineThesisId[i]">审题</a>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                }
-
-                            </table>
-
-                        </form>
-                    </div>
-                    <div>
-                        <div class="tcdPageCode5"></div>
-                    </div>
-                </div>
-            </div>
 
             </div>
 
             <div class="time">
                 <div class="ownership">版权所有 &copy;惠州学院信息科学技术学院 Copyright 2017, All rights reserved.</div>
                 <div class="realtime">
-
                 </div>
             </div>
 
@@ -447,5 +473,3 @@
 </body>
 
 </html>
-
-

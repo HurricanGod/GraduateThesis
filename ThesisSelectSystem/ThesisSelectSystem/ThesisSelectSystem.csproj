@@ -101,12 +101,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\bootstrap-table.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MyWorkPlace\Alter-Class-Message.css" />
     <Content Include="Content\MyWorkPlace\bootstrap.min.css" />
     <Content Include="Content\MyWorkPlace\CreateClasses.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\student.css" />
     <Content Include="Content\SystemAdministrator\bootstrap-select.css" />
     <Content Include="Content\SystemAdministrator\system-administrator.css" />
     <Content Include="Content\SystemAdministrator\wangEditor.css" />
@@ -119,7 +121,9 @@
     <Content Include="img\SystemAdministrator\管理员.png" />
     <Content Include="img\SystemAdministrator\系统设置.png" />
     <Content Include="img\SystemAdministrator\邮箱.png" />
+    <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\MyAdd\CreateClass.js" />
     <Content Include="Content\MyWorkPlace\ShowClassInfo.css" />
@@ -143,6 +147,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\MyAdd\show-classes-message.js" />
+    <Content Include="Scripts\student.js" />
     <Content Include="Scripts\system-administrator-login.js" />
     <Content Include="Scripts\SystemAdministrator\ajaxfileupload.js" />
     <Content Include="Scripts\SystemAdministrator\bootstrap-select.js" />
@@ -167,6 +172,7 @@
     <Compile Include="BLL\Anouncement_bll.cs" />
     <Compile Include="BLL\ClassManage_Bll.cs" />
     <Compile Include="BLL\ExcelFileBusinessOperation.cs" />
+    <Compile Include="BLL\StudentBll.cs" />
     <Compile Include="BLL\ThesisManage_bll.cs" />
     <Compile Include="BLL\UserLogin_bll.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -197,14 +203,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChoosedThesisStuNameList.cs" />
+    <Compile Include="Models\ChoosedThesisStuNameRowMapper.cs" />
     <Compile Include="Models\ChooseTeacherThesisRowMapper.cs" />
     <Compile Include="Models\ClassesModels.cs" />
     <Compile Include="Models\GuideStudentTableRowMapper.cs" />
     <Compile Include="Models\IRowMapper.cs" />
     <Compile Include="Models\MajorModel.cs" />
+    <Compile Include="Models\PartOfThesisInfo.cs" />
+    <Compile Include="Models\PartOfThesisRowMapper.cs" />
+    <Compile Include="Models\PassExamineThesis.cs" />
+    <Compile Include="Models\PassExamineThesisRowMapper.cs" />
     <Compile Include="Models\RegexMessage\RegexInfo.cs" />
     <Compile Include="Models\ChooseTeacherThesis.cs" />
     <Compile Include="Models\SnoAndThesis.cs" />
+    <Compile Include="Models\StudentMakeThesis.cs" />
+    <Compile Include="Models\StudentMakeThesisRowMapper.cs" />
     <Compile Include="Models\TGuidingStudentInfo.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,6 +242,7 @@
     <Content Include="Views\SystemAdmin\UploadTeacherTable.cshtml" />
     <Content Include="Views\Teacher\Teacher.cshtml" />
     <Content Include="Views\Teacher\ShowThesisDetail.cshtml" />
+    <Content Include="Views\Teacher\ThesisDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

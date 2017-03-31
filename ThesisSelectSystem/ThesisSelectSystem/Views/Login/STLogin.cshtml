@@ -82,17 +82,23 @@
         var STAccount = $("#STAccount").val();
         var STPwd = $("#STPassword").val();
         var STRole = $("input[name='STRoles']:checked").val();
-        alert("帐号："+STAccount+"  身份："+STRole);
+        //alert("帐号："+STAccount+"  身份："+STRole);
         var type = "post";
         var url = "CheckSTLoginInfo";
         var data = { account: STAccount, password: STPwd, role: STRole };
         var dataType = "json";
 
         function success(data) {
-            alert(data.tip);
-            if (data.role=="教师") {
-                window.location.href = "../Teacher/Teacher";
+            if (data.errorcode=='1') {
+                alert(data.tip);
+            } else {
+                if (data.role == "教师") {
+                    window.location.href = "../Teacher/Teacher";
+                } else if (data.role == "学生") {
+                    window.location.href = "../Student/index";
+                }
             }
+            
                 
         };
 
