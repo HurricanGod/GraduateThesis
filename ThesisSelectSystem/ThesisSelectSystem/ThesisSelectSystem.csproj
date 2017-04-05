@@ -147,7 +147,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\MyAdd\show-classes-message.js" />
-    <Content Include="Scripts\student1.js" />
+    <Content Include="Scripts\student.js" />
     <Content Include="Scripts\system-administrator-login.js" />
     <Content Include="Scripts\SystemAdministrator\ajaxfileupload.js" />
     <Content Include="Scripts\SystemAdministrator\bootstrap-select.js" />
