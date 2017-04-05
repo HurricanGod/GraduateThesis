@@ -266,7 +266,7 @@ li{
 }
 		/*自拟课题模块*/
 #protocol-self{
-	width:40%;
+	width:60%;
 	height:95%;
 	padding-top:3%;
 	margin:auto;
@@ -300,32 +300,66 @@ li{
 }
 		/*已选论题模块*/
 #thesis{
-	width:50%;
-	height:70%;
+	width:85%;
+	height:100%;
 	padding-top:5%;
 	margin:auto;
+	padding-left: 8%;
+	font-size: 1.2em;
+}
+.thesis-content{
+	height: 90%;
+	width: 90%;
+	background-color: #b0e0e6;	
+	padding: 4% 0;
+	border-radius: 0.5em;
+}
+
+#thesis-content{
+	
+	width: 100%;
+	height: 100%;
 }
 #thesis table{
 	width:100%;
 	height:100%;	
-	font-size: 1.6rem;
 }
-#thesis #thesis-content{
-	padding:5%;
-	border-radius: 0.5em;
-	background-color: #b0e0e6;
+
+#thesis p{
+	overflow: hidden;
+	word-wrap: break-word;
+	word-break: break-all;
+	text-align: left;
 }
 #thesis tr{
-	border:1em #b0e0e6 solid;
+	/*display: inline-block;*/
+	padding-top: 2%;
+	height: 15%;
+	border-bottom: 0.1em #CCCCCC solid;
 	background-color: #f9f9f9;
 }
+
+				
 #thesis table td:nth-child(1){
 	width:32%;
+	padding-top: 2%;
+	height: 15%;
 	text-align: right;
+					
 }
 #thesis table td:nth-child(2){
+	width:68%;
+	padding-top: 2%;
+	height: 15%;
 	text-align: center;
 }
+#thesis tr:last-child{
+	overflow: hidden;
+	overflow-y: scroll;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
 .footer{
 	width: 100%;
 	height: 5%;
