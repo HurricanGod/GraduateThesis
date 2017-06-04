@@ -13,87 +13,108 @@
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/student.css" />
     <style type="text/css">
-    body {
-        background-color: #f4fffb;
-    }
+       body{
+ 				background-color: #f4fffb;
+ 			}
+ 			#selects-content{
+ 				width: 75%;
+ 			}
+ 			td:nth-child(1){
+ 				float: left;
+ 				width: 35%;
+ 			}
+ 			td:nth-child(2){
+ 				padding-left: 0;
+ 				width: 65%;
+ 			}
+ 			textarea:first-child{
+ 				overflow: hidden;
+ 				overflow-y: scroll;
+ 			}
+ 			.value{
+ 				overflow: hidden;
+ 				word-wrap: break-word;
+ 				word-break: break-all;
+ 			}
 
-    @@media only screen and (max-width:850px) {
-        body {
-            background-color: white;
+        @@media only screen and (max-width: 850px) {
+            body {
+                background-color: white;
+            }
         }
-    }
     </style>
+
+    
 </head>
 
 <body>
-    <div id="selects-content">
-        <form action="#" method="post" role="form">
-            <table>
-                <tr>
-                    <td>
-                        <label>序号：</label>
-                    </td>
-                    <td>
-                        <input type="text" value="001" readonly="true" class="form-control" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>课题名称：</label>
-                    </td>
-                    <td>
-                        <input type="text" value="移动应用开发" readonly="true" class="form-control" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>指导老师：</label>
-                    </td>
-                    <td>
-                        <select class="form-control">
-                            <option value="唐明星">唐明星</option>
-                            <option value="唐明星">唐明星</option>
-                            <option value="唐明星">唐明星</option>
-                            <option value="唐明星">唐明星</option>
-                            <option value="唐明星">唐明星</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>完成方式：</label>
-                    </td>
-                    <td>
-                        <input type="radio" name="way" value="合作" />合作
-                        <input type="radio" name="way" value="独立" />独立
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>负责内容：</label>
-                    </td>
-                    <td>
-                        <textarea rows="5" class="form-control"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>课题内容：</label>
-                    </td>
-                    <td>
-                        <textarea rows="5" readonly="true" class="form-control">如何在应用环境中设计、建立和集成SMS短消息应用；如何创建能够充分利用SIM卡功能的代码；如何在3G电话中使用微浏览器和微Web服务器</textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <button class="btn btn-success">退选</button>
-                        <button type="submit" class="btn btn-success">选定</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
+<div id="selects-content" >
+    <form action="#" method="post" role="form">
+        <table>
+            <tr style="display: none">
+                <td>
+                    <label>论题号：</label>
+                </td>
+                <td>
+                    <input type="text" value="@ViewBag.thesisinfo.topicId" readonly="true" class="form-control" id="thesis-id"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>课题名称：</label>
+                </td>
+                <td>
+                    <input type="text" value="@ViewBag.thesisinfo.topicTitle" readonly="true" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>指导老师：</label>
+                </td>
+                <td>
+                    <select class="form-control" id="guider-select">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>完成方式：</label>
+                </td>
+                <td>
+                    <input type="radio" name="way" value="合作"/>合作
+                    <input type="radio" name="way" value="独立"/>单独完成
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>负责内容：</label>
+                </td>
+                <td>
+                    <textarea rows="5" class="form-control"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>课题内容：</label>
+                </td>
+                <td>
+                    <textarea rows="5" readonly="true" class="form-control">
+                            @ViewBag.thesisinfo.topicContext
+                        </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button class="btn btn-success" id="back-btn">返回</button>
+                    <button type="submit" class="btn btn-success" id="choose-btn">选定</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+    <script src="~/Scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/thesisdetail.js"></script>
 </body>
 
 </html>

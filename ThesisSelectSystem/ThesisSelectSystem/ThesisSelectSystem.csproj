@@ -121,6 +121,9 @@
     <Content Include="img\SystemAdministrator\管理员.png" />
     <Content Include="img\SystemAdministrator\系统设置.png" />
     <Content Include="img\SystemAdministrator\邮箱.png" />
+    <Content Include="Scripts\bootstrap-table-locale-all.min.js" />
+    <Content Include="Scripts\bootstrap-table-zh-CN.js" />
+    <Content Include="Scripts\bootstrap-table-zh-CN.min.js" />
     <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -147,6 +150,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\MyAdd\show-classes-message.js" />
+    <Content Include="Scripts\student-add.js" />
     <Content Include="Scripts\student.js" />
     <Content Include="Scripts\system-administrator-login.js" />
     <Content Include="Scripts\SystemAdministrator\ajaxfileupload.js" />
@@ -155,6 +159,7 @@
     <Content Include="Scripts\SystemAdministrator\system-administrator.js" />
     <Content Include="Scripts\SystemAdministrator\wangEditor.js" />
     <Content Include="Scripts\teacher.js" />
+    <Content Include="Scripts\thesisdetail.js" />
     <Content Include="TableMappingObj.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -214,6 +219,7 @@
     <Compile Include="Models\PartOfThesisRowMapper.cs" />
     <Compile Include="Models\PassExamineThesis.cs" />
     <Compile Include="Models\PassExamineThesisRowMapper.cs" />
+    <Compile Include="Models\PersonalThesis.cs" />
     <Compile Include="Models\RegexMessage\RegexInfo.cs" />
     <Compile Include="Models\ChooseTeacherThesis.cs" />
     <Compile Include="Models\SnoAndThesis.cs" />

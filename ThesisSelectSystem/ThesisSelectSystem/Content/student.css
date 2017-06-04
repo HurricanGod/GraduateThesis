@@ -306,6 +306,7 @@ li{
 	margin:auto;
 	padding-left: 8%;
 	font-size: 1.2em;
+
 }
 .thesis-content{
 	height: 90%;
@@ -314,51 +315,69 @@ li{
 	padding: 4% 0;
 	border-radius: 0.5em;
 }
+.thesis1{
+			height: 90%;
+			width: 90%;
+			background-color: #b0e0e6;	
+			padding: 4% 0;
+			border-radius: 0.5em;
+		}
+		.thesis2{
+			width: 100%;
+			height: 100%;
+			background-color: #f9f9f9;
+		}
+		
+		.form{
+			width: 100%;
+			height: 100%;
+			background-color: #f9f9f9;
+		}
+		
+		.name1,.status1,.type1,.charging1{
+			width: 100%;
+			height: 10%;
+			padding: 1.5% 0;
 
-#thesis-content{
-	
-	width: 100%;
-	height: 100%;
-}
-#thesis table{
-	width:100%;
-	height:100%;	
-}
+			border-bottom: 0.1em #CCCCCC solid;
+			
+		}
+		.name1 {
+			overflow: auto;
+		}
+		
+		.left1{
+			float: left;
+			padding-left: 15%;
+			width: 25%;
+			height: auto
+		}
+		.right1{
+			width: 75%;
+			height: auto;
+			float: right;
+			margin: 0 auto;
+			text-align: center;
+			
+			
+		}
+		.suggest1,.content1{
+			width: 100%;
+			height: 25%;
+			
+		}
+		.suggest1{
+			border-bottom: 0.1em #CCCCCC solid;
+			
+		}
+		.suggest11,.content11{
+			float: right;
+			width: 60%;
+			height: 100%;
+			/*padding-right: 35%;*/
+			overflow: auto;
+		}
 
-#thesis p{
-	overflow: hidden;
-	word-wrap: break-word;
-	word-break: break-all;
-	text-align: left;
-}
-#thesis tr{
-	/*display: inline-block;*/
-	padding-top: 2%;
-	height: 15%;
-	border-bottom: 0.1em #CCCCCC solid;
-	background-color: #f9f9f9;
-}
-
-				
-#thesis table td:nth-child(1){
-	width:32%;
-	padding-top: 2%;
-	height: 15%;
-	text-align: right;
-					
-}
-#thesis table td:nth-child(2){
-	width:68%;
-	padding-top: 2%;
-	height: 15%;
-	text-align: center;
-}
-#thesis tr:last-child{
-	overflow: hidden;
-	overflow-y: scroll;
-	word-break: break-all;
-	word-wrap: break-word;
-}
 
 .footer{
 	width: 100%;
@@ -380,4 +399,3 @@ li{
 	float: right;
 	text-align: center;
 }
-

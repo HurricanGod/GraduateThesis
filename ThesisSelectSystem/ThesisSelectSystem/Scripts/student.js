@@ -34,7 +34,7 @@
     })
 
     var queryThesisUrl = "/Student/QueryTeacherThesis";
-    var noData = null;
+    var noData = new Object();
 
     function successGetThesisData(data) {
         var table = $("#teacher-thesis-tb");
@@ -47,10 +47,12 @@
             var td5 = $("<td></td>").text(data[i].currentChoosedNumber);
             var td6 = $("<td></td>").text(data[i].maxChoosedNumber);
             var td7 = $("<td></td>");
-            var button = $("<button class='btn btn-info'></button>");
+            var button = $("<button class='btn btn-info'>查看</button>").attr("value",data[i].id);
             button.click(function () {
                 event.preventDefault();
-                alert("success");
+                var thesisid = $(this).val();
+                var url = "/Student/TeacherThesisDetail?id=" + thesisid;
+                location.href = url;
             });
             button.appendTo(td7);
             td1.appendTo(tr);
@@ -63,6 +65,9 @@
             tr.appendTo(table);
         }
     }
+
+    //myPostAjax(queryThesisUrl, noData, successGetThesisData, true);
+
     /*-----------------------------------------------------------------------------------------------------------------------*/
     //----------------------------Hurrican添加部分-----------------------------
     //--------------------------2017年4月5日 20:37:58--------------------------
@@ -77,12 +82,12 @@ function myPostAjax(url, data, successFunction, isAsync) {
         data: data,
         dataType: "json",
         success: successFunction,
-        error: function (textStatus, errorThrown) {
-            alert("状态：" + textStatus + "\n异常：" + errorThrown);
-        }
+        error:error
     });
 }
-
+function error(textStatus, errorThrown) {
+    alert("状态：" + textStatus + "\n异常：" + errorThrown);
+}
 function openwin() {
     window.open("detail/select.html", "_blank", "height=400,width=700,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no")
 }

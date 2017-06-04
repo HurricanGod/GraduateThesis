@@ -12,8 +12,8 @@ namespace ThesisSelectSystem
     {
         protected void Application_Start()
         {
-            Application["userYear"] = 2018;
-            Application["pastWeight"] = 6;
+            Application["userYear"] = 2018;     //毕业年份
+            Application["pastWeight"] = 6;      //课题通过审核需达到的最低分数
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -9,7 +9,8 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>学生选题</title>
     <link rel="stylesheet" type="text/css" href="~/Content/SystemAdministrator/bootstrap-select.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content//bootstrap.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content//bootstrap.css" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/Content/student.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/SystemAdministrator/wangEditor.css"/>
     <link rel="stylesheet" href="~/Content/bootstrap-table.css" type="text/css"/>
@@ -48,20 +49,20 @@
                 <li class="apply-topic">
                     <a id="apartment" href="#">
                         <span class="glyphicon glyphicon-pencil"></span>
-                        申请拟题
+                        申请自主拟题
                     </a>
 
                 </li>
                 <li class="Protocol-self">
                     <a href="#">
                         <span class="glyphicon glyphicon-pencil"></span>
-                        自拟课题
+                        自主拟题
                     </a>
                 </li>
                 <li class="Thesis">
                     <a href="#">
                         <span class="glyphicon glyphicon-cog"></span>
-                        已选论题
+                        我的论题
                     </a>
                 </li>
             </ul>
@@ -88,7 +89,7 @@
 
                 <div id="selects">
                     <!--选择课题-->
-                    <table class="table table-condensed table-hover" id="teacher-thesis-tb">
+                    @*<table class="table table-condensed table-hover" id="teacher-thesis-tb">
                         <thead>
                             <tr>
                                 <th>序号</th>
@@ -101,20 +102,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>应用型</td>
-                                <td>某某某项目</td>
-                                <td>汪华斌</td>
-                                <td>34</td>
-                                <td>12</td>
-                                <td><button class=" btn btn-info" onclick="openwin()">查看</button></td>
-                            </tr>
-                           
                         </tbody>
+                    </table>*@
+                    <table id="teacher-thesis-tb">
+                        
                     </table>
-                    <div id="padge">
-
+                    @*<div id="padge">
                         <ul class="pagination">
                             <li><a href="#">«</a></li>
                             <li><a href="#">1</a></li>
@@ -125,19 +118,19 @@
                             <li><a href="#">6</a></li>
                             <li><a href="#">»</a></li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
 
                 <div id="applys">
                     <!--申请拟题-->
                     <div id="applys-set">
                         <form action="#" method="post" role="form">
-                            <input type="text" placeholder="请输入学号" class="form-control" /><br />
-                            <select class="form-control">
-                                <option value="申请自拟题">申请自拟题</option>
-                                <option value="不申请自拟题">不申请自拟题</option>
+                            <input type="text" value="@ViewBag.sno" class="form-control" id="sno" readonly="readonly"/><br />
+                            <select class="form-control" id="apply-select">
+                                <option value="1">申请自拟题</option>
+                                <option value="0">取消自拟题</option>
                             </select><br />
-                            <input type="submit" value="提交" class="form-control btn-success" />
+                            <input type="button" value="提交" class="form-control btn-success" id="apply-make-thesis-btn"/>
                         </form>
                     </div>
                 </div>
@@ -147,7 +140,7 @@
                     <div id="protocol-content">
                         <form action="#" method="post" role="form">
                             <table>
-                                <tr>
+                                <tr style="display: none">
                                     <td id="Number"><label for="number">序号：</label></td>
                                     <td><input type="text" id="number" class="form-control" /></td>
                                 </tr>
@@ -159,17 +152,30 @@
                                     <td><label for="type">论题类型：</label></td>
                                     <td>
                                         <select id="type" class="form-control">
-                                            <option value="应用型">应用型</option>
-                                            <option value="研究型">研究型</option>
+                                            <option value="应用研究类">应用研究类</option>
+                                            <option value="基础研究类">基础研究类</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for="sourse">论题来源：</label></td>
+                                    <td><label for="sourse">完成形式：</label></td>
                                     <td>
                                         <select id="sourse" class="form-control">
-                                            <option value="自拟">自拟</option>
-                                            <option value="教师拟">教师拟</option>
+                                            <option value="1">单独完成</option>
+                                            <option value="2">两人合作</option>
+                                            <option value="3">三人合作</option>
+                                            <option value="4">四人合作</option>
+                                            <option value="5">五人合作</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><label for="sourse">合作成员：</label></td>
+                                    <td>
+                                        <select id="partner" class="form-control">
+                                            <option value="自拟">***</option>
+                                            <option value="教师拟">***</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -177,7 +183,6 @@
                                     <td><label for="times">毕业年份：</label></td>
                                     <td>
                                         <select id="times" class="form-control">
-                                            <option value="2017">2017</option>
                                             <option value="2018">2018</option>
                                             <option value="2019">2019</option>
                                             <option value="2020">2020</option>
@@ -189,10 +194,6 @@
                                     <td><label for="teacher">指导老师：</label></td>
                                     <td>
                                         <select id="teacher" class="form-control">
-                                            <option value="曽树洪">曽树洪</option>
-                                            <option value="曽树洪">曽树洪</option>
-                                            <option value="曽树洪">曽树洪</option>
-                                            <option value="曽树洪">曽树洪</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -210,35 +211,40 @@
                 </div>
 
                 <div id="thesis">
-                    <!--已选论题-->
-                    <div class="thesis-content">
-                        <div id="thesis-content">
-                            <form action="#" method="post">
-                                <table>
-                                    <tr><td><b>论题名称：</b></td><td>移动应用开发</td></tr>
-                                    <tr><td><b>审核状态：</b></td><td>2/5(已通过/总)</td></tr>
-                                    <tr><td><b>论题名称：</b></td><td>移动应用开发</td></tr>
-                                    <tr>
-                                        <td><b>指导老师意见：</b></td>
-                                        <td>
-                                            <p>1.在应用环境中设计、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短消</p>
-                                            <p>2.在应用环境中设计、建立和集成SMS333333333333333333333333333333333消</p>
-                                        </td>
-                                    </tr>
-                                    <tr><td><b>负责模块：</b></td><td>文档编写和结构设计</td></tr>
-                                    <tr>
-                                        <td><b>论题内容：</b></td>
-                                        <td>
-                                            .在应用环境中设计、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短、建立和集成SMS短消
+                     <div class="thesis1">
+                        <form action="#" method="post" class="form">
+                            <div class="name1">
+                                <span class="left1"><b>论题名称:</b></span>
+                                <span class="right1">@ViewBag.thesisInfo.name</span>
+                            </div>
+                            <div class="status1">
+                                <span class="left1"><b>审核状态:</b></span>
+                                <span class="right1">@ViewBag.status</span>
+                            </div>
+                            <div class="type1">
+                                <span class="left1"><b>论题类型:</b></span>
+                                <span class="right1">@ViewBag.thesisInfo.type</span>
+                            </div>
+                            
+                            <div class="charging1">
+                                <span class="left1"><b>负责模块:</b></span>
+                                <span class="right1">@ViewBag.thesisInfo.response</span>
+                            </div>
 
-                                            2.在应用环境中设计、建立和集成SMS333333333333333333333333333333333消
-                                        </td>
-                                    </tr>
-
-                                </table>
-
-                            </form>
-                        </div>
+                            <div class="suggest1">
+                                <span class="left1"><b>指导老师意见:</b></span>
+                                <div class="suggest11" style="text-align:left">
+                                    @foreach (string t in @ViewBag.advertise)
+                                    {
+                                        <p>@t</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="content1">
+                                <span class="left1"><b>论题内容:</b></span>
+                                <div class="content11">@ViewBag.thesisInfo.content</div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -256,9 +262,12 @@
     </div>
     <script src="~/Scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/Scripts/SystemAdministrator/bootstrap-select.js" type="text/javascript" charset="utf-8"></script>
-    <script src="~/Scripts/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-    <script src="~/Scripts/student.js" type="text/javascript" charset="utf-8"></script>
+   @* <script src="~/Scripts/bootstrap.js" type="text/javascript" charset="utf-8"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootstrap-table.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/bootstrap-table-zh-CN.js" type="text/javascript" ></script>
+    <script src="~/Scripts/student.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/Scripts/student-add.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>
